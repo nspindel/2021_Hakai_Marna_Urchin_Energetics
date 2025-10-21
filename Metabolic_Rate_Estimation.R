@@ -486,11 +486,16 @@ p_temp_pco2_rmr
 
 
 # Post hoc on favored model (Linear additive (stacking-weighted winner)) ----
-selected_model <- fit_all$lin_add
+fit_lin_add_metabolism <- readRDS("./Model_Output/metabolism_temp_oa_lin_add.rds")
+selected_model <- fit_lin_add_metabolism
 selected_model$formula
 # absolute_rate_vo2_mg_o2_per_hour ~ log(afdm_g) + temp_deg_c + pco2_uatm + (1 | tank_id) 
 stopifnot(inherits(selected_model, "brmsfit"))
 stopifnot(exists("d"))
+
+d <- data_metabolism_const_temp_oa %>%
+  select(absolute_rate_vo2_mg_o2_per_hour, afdm_g, temp_deg_c, pco2_uatm, tank_id) %>%
+  drop_na()
 
 d <- d %>%
   mutate(
@@ -536,7 +541,9 @@ emmeans::hpd.summary(pairs_pop_diff,
 # HPD interval probability: 0.95
 
 # Do the effects of pCO₂ differ across temperature? Possible nonlinear attenuation at 20 °C. Use GP (by pCO₂) model to explore pairwise contrasts by temperature ---- 
-ems <- emmeans(fit_all$full, ~ pco2_uatm | temp_deg_c | log(afdm_g),
+fit_full_metabolism <- readRDS("./Model_Output/metabolism_temp_oa_full.rds")
+
+ems <- emmeans(fit_full_metabolism, ~ pco2_uatm | temp_deg_c,
                at = list(temp_deg_c = c(10,13,16,17,18,20)))
 
 cont_pco2 <- contrast(ems, method = "revpairwise", by = "pco2_uatm", ratios = TRUE)
@@ -546,6 +553,46 @@ emmeans::hpd.summary(cont_pco2,
                      point.est = mean,
                      type = "response")
 
+# pco2_uatm = 600:
+#   contrast                    ratio lower.HPD upper.HPD
+# temp_deg_c13 / temp_deg_c10 0.812     0.488      1.17
+# temp_deg_c16 / temp_deg_c10 1.053     0.518      1.69
+# temp_deg_c16 / temp_deg_c13 1.298     0.847      1.80
+# temp_deg_c17 / temp_deg_c10 1.350     0.657      2.13
+# temp_deg_c17 / temp_deg_c13 1.686     0.935      2.51
+# temp_deg_c17 / temp_deg_c16 1.290     0.997      1.52
+# temp_deg_c18 / temp_deg_c10 1.808     0.816      2.88
+# temp_deg_c18 / temp_deg_c13 2.291     0.952      3.64
+# temp_deg_c18 / temp_deg_c16 1.751     0.985      2.45
+# temp_deg_c18 / temp_deg_c17 1.341     0.994      1.63
+# temp_deg_c20 / temp_deg_c10 3.019     0.892      5.39
+# temp_deg_c20 / temp_deg_c13 3.892     0.911      7.10
+# temp_deg_c20 / temp_deg_c16 3.003     0.913      5.43
+# temp_deg_c20 / temp_deg_c17 2.262     0.939      3.75
+# temp_deg_c20 / temp_deg_c18 1.644     0.957      2.37
+# 
+# pco2_uatm = 1200:
+#   contrast                    ratio lower.HPD upper.HPD
+# temp_deg_c13 / temp_deg_c10 0.953     0.637      1.24
+# temp_deg_c16 / temp_deg_c10 1.102     0.629      1.62
+# temp_deg_c16 / temp_deg_c13 1.156     0.853      1.54
+# temp_deg_c17 / temp_deg_c10 1.222     0.720      1.84
+# temp_deg_c17 / temp_deg_c13 1.291     0.863      1.86
+# temp_deg_c17 / temp_deg_c16 1.109     0.970      1.29
+# temp_deg_c18 / temp_deg_c10 1.363     0.790      2.12
+# temp_deg_c18 / temp_deg_c13 1.453     0.849      2.27
+# temp_deg_c18 / temp_deg_c16 1.244     0.924      1.70
+# temp_deg_c18 / temp_deg_c17 1.113     0.959      1.33
+# temp_deg_c20 / temp_deg_c10 1.572     0.831      2.64
+# temp_deg_c20 / temp_deg_c13 1.698     0.821      3.03
+# temp_deg_c20 / temp_deg_c16 1.456     0.812      2.47
+# temp_deg_c20 / temp_deg_c17 1.290     0.837      1.97
+# temp_deg_c20 / temp_deg_c18 1.144     0.881      1.53
+# 
+# Point estimate displayed: mean 
+# Results are back-transformed from the log scale 
+# HPD interval probability: 0.95 
+
 cont_posterior_pco2 <- gather_emmeans_draws(cont_pco2) 
 
 cont_temp <- contrast(ems, method = "revpairwise", by = "temp_deg_c", ratios = TRUE)
@@ -554,6 +601,34 @@ emmeans::hpd.summary(cont_temp,
                      prob = 0.95, 
                      point.est = mean,
                      type = "response")
+
+# temp_deg_c = 10:
+#   contrast                     ratio lower.HPD upper.HPD
+# pco2_uatm1200 / pco2_uatm600 1.678     0.782      2.71
+# 
+# temp_deg_c = 13:
+#   contrast                     ratio lower.HPD upper.HPD
+# pco2_uatm1200 / pco2_uatm600 1.991     0.874      3.17
+# 
+# temp_deg_c = 16:
+#   contrast                     ratio lower.HPD upper.HPD
+# pco2_uatm1200 / pco2_uatm600 1.762     0.919      2.63
+# 
+# temp_deg_c = 17:
+#   contrast                     ratio lower.HPD upper.HPD
+# pco2_uatm1200 / pco2_uatm600 1.506     0.883      2.16
+# 
+# temp_deg_c = 18:
+#   contrast                     ratio lower.HPD upper.HPD
+# pco2_uatm1200 / pco2_uatm600 1.255     0.728      1.80
+# 
+# temp_deg_c = 20:
+#   contrast                     ratio lower.HPD upper.HPD
+# pco2_uatm1200 / pco2_uatm600 0.915     0.403      1.54
+# 
+# Point estimate displayed: mean 
+# Results are back-transformed from the log scale 
+# HPD interval probability: 0.95
 
 cont_posterior_temp <- gather_emmeans_draws(cont_temp) %>%
   mutate(
@@ -569,6 +644,14 @@ emmeans::hpd.summary(cont_overall,
                      prob = 0.95, 
                      point.est = mean,
                      type = "response")
+
+# temp_deg_c = 15.6666666666667:
+#   contrast                     ratio lower.HPD upper.HPD
+# pco2_uatm1200 / pco2_uatm600  1.62      1.18      2.09
+# 
+# Point estimate displayed: mean 
+# Results are back-transformed from the log scale 
+# HPD interval probability: 0.95
 
 cont_posterior_overall <- gather_emmeans_draws(cont_overall) %>%
   mutate(
@@ -635,7 +718,16 @@ plot_emm_fit <- ggplot(cont_pairwise_and_overall_posterior_temp,
     legend.position = "bottom",
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
-  );plot_emm_fit
+  )
+
+plot_emm_fit
+
+ggsave("./Figures/Supplemental/PWC_Metabolism.jpg", plot_emm_fit,
+       width = 6, height = 8, units = "in")
+ggsave("./Figures/Supplemental/PWC_Metabolism.pdf", plot_emm_fit,
+       width = 6, height = 8, units = "in")
+ggsave("./Figures/Supplemental/PWC_Metabolism.png", plot_emm_fit,
+       width = 6, height = 8, units = "in")
 
 # Model RMR in El Nino and La Nina ----
 brms_formula_full_dyn_wet <- bf(absolute_rate_vo2_mg_o2_per_hour ~ 
