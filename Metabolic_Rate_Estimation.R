@@ -7,9 +7,6 @@
 # Author: Nathan B. Spindel                                                   #
 ###############################################################################
 # Load CRAN libraries and utility functions  ----------------------------------
-# source("Packages.R")
-
-# source("Functions.R")
 libs <- c(
   "tidyverse", 
   "janitor",
@@ -17,33 +14,16 @@ libs <- c(
   "rstan",
   "brms",
   "cmdstanr",
-  "posterior"
+  "posterior",
+  "tidybayes",
+  "emmeans",
+  "ggrepel",
+  "scales"
   )
+
 lapply(libs, require, character.only = TRUE)
 
-options(scipen = 100000)
-
-# Helper: add GP priors only if GP term present
-priors_for <- function(formula) {
-  # Collapse possible multiline bf() into one string
-  f_chr <- paste(deparse(formula), collapse = " ")
-  
-  # Case 1: full GP with by = pco2_uatm (two GP surfaces)
-  if (grepl("gp\\s*\\([^,]+,\\s*[^,]*by\\s*=\\s*pco2_uatm", f_chr)) {
-    message("→ Using GP priors (by-pCO2 specific surfaces)")
-    c(priors_common, priors_gp)
-    
-    # Case 2: single GP term (no by)
-  } else if (grepl("gp\\(", f_chr)) {
-    message("→ Using GP priors (single surface, no by-factor)")
-    c(priors_common, priors_gp_noby)
-    
-    # Case 3: no GP term
-  } else {
-    message("→ Using common (non-GP) priors")
-    priors_common
-  }
-}
+source("Utility_Functions.R")
 
 # Load & wrangle data: ---------------------------------------------------------
 data_metabolism <- read.csv("./Data/Respirometry.csv") %>%
@@ -208,7 +188,7 @@ priors_dynamic <- c(
   prior(gamma(0.01, 0.01),lb = 0, class = "shape")
 )
 
-# Candidate model formulae ----
+# Candidate model formulae for constant temperatures ----
 # Full model
 form_full <- brms::bf(
   absolute_rate_vo2_mg_o2_per_hour ~
@@ -253,7 +233,7 @@ model_set <- list(
   lin_add      = form_lin_add,
   size_only    = form_size_only
 )
-# Fit candidate models ----
+# Fit candidate constant temperature models ----
 # Compact working df
 d <- data_metabolism_const_temp_oa %>%
   select(absolute_rate_vo2_mg_o2_per_hour, afdm_g, temp_deg_c, pco2_uatm, tank_id) %>%
@@ -306,11 +286,13 @@ fit_metabolism_dynamic_temp_afdm_rmr_full <- brm(
   seed = seed,
   file = "./Model_Output/metabolism_dynamic_temp_afdm_rmr_full"
 )
-# Add LOO criteria and compute weights ----
+# Model selection based on LOO stacking weights ----
 fit_all <- lapply(fit_all, add_criterion, criterion = "loo", reloo = FALSE)
 loos    <- lapply(fit_all, \(x) x$criteria$loo)
 sapply(loos, function(x) attr(x, "dims")[1])
 # Should print identical numbers (e.g., 64000 for all)
+# full   gp_noby   lin_int   lin_add size_only 
+# 64000     64000     64000     64000     64000
 
 # Stacking and pseudo-BMA (Bayesian bootstrap) weights
 # w_stack <- loo::model_weights(loos, method = "stacking")
@@ -330,41 +312,11 @@ w_pbma
 # Method: pseudo-BMA+ with Bayesian bootstrap
 # 
 #   weight
-# full      0.041 
-# gp_noby   0.119 
-# lin_int   0.215 
-# lin_add   0.479 
-# size_only 0.147
-
-# Bayes factors for targeted hypotheses ----
-# Bridge sampling is most stable when models are reasonably close in complexity.
-# Compare (a) full vs gp_noby: does pCO2-specific thermal surface improve fit?
-# Compare (b) lin_int vs lin_add: is T × pCO2 interaction warranted?
-bf_full_vs_gp_noby <- bayes_factor(fit_all$full, fit_all$gp_noby)
-bf_linint_vs_linadd <- bayes_factor(fit_all$lin_int, fit_all$lin_add)
-
-interpret_bf_manual <- function(bf) {
-  if (bf < 1) "Evidence for H0"
-  else if (bf < 3) "Anecdotal"
-  else if (bf < 10) "Moderate"
-  else if (bf < 30) "Strong"
-  else if (bf < 100) "Very strong"
-  else "Extreme"
-}
-
-bf_tbl <- tibble(
-  comparison = c("full vs gp_noby (by-pCO2 GP?)",
-                 "lin_int vs lin_add (T×pCO2?)"),
-  BF10 = c(as.numeric(bf_full_vs_gp_noby$bf),
-           as.numeric(bf_linint_vs_linadd$bf)),
-  interpretation = sapply(BF10, interpret_bf_manual)
-) %>%
-  print()
-# # A tibble: 2 × 3
-# comparison                      BF10 interpretation 
-# <chr>                          <dbl> <chr>          
-# 1 full vs gp_noby (by-pCO2 GP?) 0.129  Evidence for H0
-# 2 lin_int vs lin_add (T×pCO2?)  0.0113 Evidence for H0
+# full      0.040 
+# gp_noby   0.107 
+# lin_int   0.219 
+# lin_add   0.500 # <- favored
+# size_only 0.135
 
 # Pareto-k summaries
 pk <- lapply(loos, \(x) x$diagnostics$pareto_k)
@@ -378,31 +330,31 @@ sapply(pk, \(v) table(cut(v,
 # bad (≤1)         0       0       0       0         0    0
 # very bad (>1)    1       1       1       1         1    0
 
-bayes_R2(fit_all$gp_noby)
+bayes_R2(fit_all$lin_add)
 # Estimate  Est.Error      Q2.5     Q97.5
-# R2 0.8194751 0.01652719 0.7832296 0.8478939
+# R2 0.8212704 0.01653791 0.7846591 0.8492003
 
-# Posterior predictive check for full model
-pp_check(fit_all$full, ndraws = 50)
+# Posterior predictive check for favored model
+pp_check(fit_all$lin_add, ndraws = 50)
 
 # Save session info for provenance
 sink("./Model_Output/sessionInfo_RMR.txt"); print(sessionInfo()); sink()
 
-# Visualize conditional effects ----
+# Visualize conditional effects for constant temperatures ----
 # selected_model <- fit_all[[winner]]
 selected_model <- fit_all[["full"]]
 
-ce_95 <- conditional_effects(selected_model, robust = F)
-ce_80 <- conditional_effects(selected_model, robust = F, prob = 0.8)
+ce_95_const <- conditional_effects(selected_model, robust = F)
+ce_80_const <- conditional_effects(selected_model, robust = F, prob = 0.8)
 
 data <- d %>% filter(afdm_g > 0.1) # exclude erroneous measurement
 
-df_ce_temp_pco2_plot_95 <- ce_95$`temp_deg_c:pco2_uatm` %>%
+df_ce_temp_pco2_plot_95 <- ce_95_const$`temp_deg_c:pco2_uatm` %>%
   dplyr::mutate(
     plot_label = factor(pco2_uatm, labels = c("600 μatm", "1200 μatm"))
   )
 
-df_ce_temp_pco2_plot_80 <- ce_80$`temp_deg_c:pco2_uatm` %>%
+df_ce_temp_pco2_plot_80 <- ce_80_const$`temp_deg_c:pco2_uatm` %>%
   dplyr::mutate(
     plot_label = factor(pco2_uatm, labels = c("600 μatm", "1200 μatm"))
   )
@@ -532,3 +484,328 @@ p_temp_pco2_rmr <- ggplot() +
 p_temp_pco2_rmr
 
 
+
+# Post hoc on favored model (Linear additive (stacking-weighted winner)) ----
+selected_model <- fit_all$lin_add
+selected_model$formula
+# absolute_rate_vo2_mg_o2_per_hour ~ log(afdm_g) + temp_deg_c + pco2_uatm + (1 | tank_id) 
+stopifnot(inherits(selected_model, "brmsfit"))
+stopifnot(exists("d"))
+
+d <- d %>%
+  mutate(
+    pco2_uatm = factor(pco2_uatm),          # enforce factor coding
+    logafdm_g = if ("logafdm_g" %in% names(d)) d$logafdm_g else log(afdm_g)
+  )
+
+levels(d$pco2_uatm)                         # confirm treatment levels & baseline
+
+# Population-level = marginalize random effects (re_formula = NA)
+emm_pop_link  <- emmeans(selected_model, ~ log(afdm_g) + temp_deg_c + pco2_uatm,
+                         re_formula = NA, 
+                         type = "link") # on link scale (log mu)
+                         # at = list(temp_deg_c = c(10,13,16,17,18,20)))   
+
+emm_pop_resp  <- summary(emm_pop_link, type = "response")    # back-transform to response (means)
+emm_pop_resp
+# afdm_g temp_deg_c pco2_uatm response lower.HPD upper.HPD
+# 4.71       15.7 600           2.47      1.83      3.21
+# 4.71       15.7 1200          3.89      2.84      5.08
+# 
+# Point estimate displayed: median 
+# Results are back-transformed from the log scale 
+# HPD interval probability: 0.95
+
+
+# 1) Differences on response scale (additive in mu)
+pairs_pop_diff <- contrast(emm_pop_link, "pairwise")
+
+emmeans::hpd.summary(pairs_pop_diff, 
+                     prob = 0.95, 
+                     point.est = mean,
+                     type = "response")
+
+# contrast                     ratio lower.HPD upper.HPD
+# pco2_uatm600 / pco2_uatm1200 0.645     0.404     0.904
+# 
+# Point estimate displayed: mean 
+# Results are back-transformed from the log scale 
+# HPD interval probability: 0.95
+
+# Do the effects of pCO₂ differ across temperature? Possible nonlinear attenuation at 20 °C. Use GP (by pCO₂) model to explore pairwise contrasts by temperature ---- 
+ems <- emmeans(fit_all$full, ~ pco2_uatm | temp_deg_c | log(afdm_g),
+               at = list(temp_deg_c = c(10,13,16,17,18,20)))
+
+cont_pco2 <- contrast(ems, method = "revpairwise", by = "pco2_uatm", ratios = TRUE)
+
+emmeans::hpd.summary(cont_pco2, 
+                     prob = 0.95, 
+                     point.est = mean,
+                     type = "response")
+cont_posterior_pco2 <- gather_emmeans_draws(cont_pco2) 
+
+cont_temp <- contrast(ems, method = "revpairwise", by = "temp_deg_c", ratios = TRUE)
+
+emmeans::hpd.summary(cont_temp, 
+                     prob = 0.95, 
+                     point.est = mean,
+                     type = "response")
+
+cont_posterior_temp <- gather_emmeans_draws(cont_temp) %>%
+  mutate(
+    temp_deg_c = as.factor(temp_deg_c)
+  )
+
+ems_overall <- emmeans(fit_all$full, ~ pco2_uatm | temp_deg_c)
+
+cont_overall <- contrast(ems_overall, method = "revpairwise", 
+                         type = "response", ratios = TRUE)
+
+emmeans::hpd.summary(cont_overall, 
+                     prob = 0.95, 
+                     point.est = mean,
+                     type = "response")
+
+cont_posterior_overall <- gather_emmeans_draws(cont_overall) %>%
+  mutate(
+    temp_deg_c = as.factor("mean")
+  ) 
+
+cont_pairwise_and_overall_posterior_pco2 <- data.frame()
+cont_pairwise_and_overall_posterior_pco2 <- rbind(cont_posterior_pco2, 
+                                                  cont_posterior_overall)
+
+summary_emm_const_pco2 <- cont_pairwise_and_overall_posterior_pco2 %>%
+  group_by(contrast, pco2_uatm) %>%
+  mean_hdi(.value, .width = c(0.95)) %>%
+  mutate(
+    .value = round(.value, digits = 2),
+    .lower = round(.lower, digits = 2),
+    .upper = round(.upper, digits = 2)
+  ) %>%
+  mutate(
+    HDI = paste(.value, " (", .lower, ", ", .upper, ")", sep = "")
+  )
+
+# write.xlsx(as.data.frame(summary_emm_const_pco2), "./Pairwise_Comparisons_Emmeans_pco2.xlsx", 
+#            row.names = F)
+
+cont_pairwise_and_overall_posterior_temp <- data.frame()
+cont_pairwise_and_overall_posterior_temp <- rbind(cont_posterior_temp, 
+                                                  cont_posterior_overall)
+
+summary_emm_const_temp <- cont_pairwise_and_overall_posterior_temp %>%
+  group_by(contrast, temp_deg_c) %>%
+  mean_hdi(.value, .width = c(0.95)) %>%
+  mutate(
+    .value = round(.value, digits = 2),
+    .lower = round(.lower, digits = 2),
+    .upper = round(.upper, digits = 2)
+  ) %>%
+  mutate(
+    HDI = paste(.value, " (", .lower, ", ", .upper, ")", sep = "")
+  )
+
+# write.xlsx(as.data.frame(summary_emm_const_temp), "./Pairwise_Comparisons_Emmeans_temp.xlsx", 
+#            row.names = F)
+
+plot_emm_fit <- ggplot(cont_pairwise_and_overall_posterior_temp, 
+                       aes(x = .value, y = contrast)) +
+  geom_vline(xintercept = 0, linetype = 2, color = "black", linewidth = 1, 
+             alpha = 0.7) +
+  stat_pointinterval(point_interval = "mean_hdi", .width = c(0.95, 0.80),
+                     interval_size_range = c(1,2), point_size = 4) +
+  geom_label_repel(data = summary_emm_const_temp,
+                   aes(x = .value, label = HDI), 
+                   fill = "white", nudge_x = -0.4, nudge_y = 1) +
+  facet_grid(rows = vars(temp_deg_c), switch = "y") +
+  labs(
+    x = NULL,
+    y = "temperature (°C)",
+    title = NULL,
+    subtitle = expression("pCO"[2]*" effect (1200 µatm vs 600 µatm)")
+  ) +
+  gg_options() +
+  scale_x_continuous(breaks = pretty_breaks(n = 6)) +
+  theme(
+    legend.position = "bottom",
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  );plot_emm_fit
+
+# Model RMR in El Nino and La Nina ----
+brms_formula_full_dyn_wet <- bf(absolute_rate_vo2_mg_o2_per_hour ~ 
+                          log(wet_mass_g) +
+                          gp(trial_day, k = 5, c = 5/4, by = temp_label) +
+                          (1|tank_id))
+
+# default_priors <- default_prior(object = brms_formula_full, 
+#                                 data = data_wet_mass_rmr_dynamic_temp, 
+#                                 family = brms_fam)
+
+priors_dyn_wet <- c( 
+  prior(normal(0,10), class = "b"),
+  prior(student_t(3, 0.6, 5), class = "Intercept"),
+  prior(inv_gamma(1.882105, 0.123406), class = "lscale", coef = "gptrial_daytemp_labelElNiño21M18°C"),
+  prior(inv_gamma(1.896485, 0.126358), class = "lscale", coef = "gptrial_daytemp_labelLaNiña18M14°C"),
+  prior(student_t(3, 0, 2.5), lb = 0, class = "sd"),
+  prior(R2D2(mean_R2 = 0.1, prec_R2 = 30, cons_D2 = 0.5), class = "sdgp"),
+  prior(gamma(0.01, 0.01),lb = 0, class = "shape")
+)
+
+# fit model
+fit_metabolism_rmr_dyn_wet_mass <- brm(
+  formula = brms_formula_full_dyn_wet, 
+  data = data_wet_mass_rmr_dynamic_temp,
+  family = brms_fam,
+  cores = cores,
+  prior = priors_dyn_wet,
+  sample_prior = "yes",
+  save_pars = save_pars(all = TRUE),
+  init = 0,
+  iter = iterations,
+  warmup = warmup,
+  control = control_list,
+  file_refit = file_refit,
+  backend = backend,
+  seed = seed,
+  file = "./Model_Output/metabolism_dyn_wet_mass_full"
+)
+
+# Visualize conditional effects in El Nino and La Nina ----
+# fit_metabolism_rmr_dyn_wet_mass <- readRDS("./Model_Output/metabolism_dyn_wet_mass_full.rds")
+ce_95_dyn_wet_mass <- conditional_effects(fit_metabolism_rmr_dyn_wet_mass, robust = F)
+ce_80_dyn_wet_mass <- conditional_effects(fit_metabolism_rmr_dyn_wet_mass, prob = 0.8, robust = F)
+
+pd <- position_dodge(width = 2)
+
+empirical_means_rmr_dyn_wet_mass <- data_wet_mass_rmr_dynamic_temp %>%
+  dplyr::mutate(
+    plot_day = case_when(
+      trial_id == 1 ~ 22,
+      trial_id == 2 ~ 42,
+      trial_id == 3 ~ 68
+    )
+  ) %>%
+  dplyr::group_by(plot_day, tank_id, temp_label) %>% 
+  dplyr::summarise(
+    emp_mean_rmr = mean(absolute_rate_vo2_mg_o2_per_hour),
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::select(plot_day, tank_id, temp_label, emp_mean_rmr) 
+
+p_dyn_wet_mass_rmr <- ggplot() +
+  geom_line(data = ce_95_dyn_wet_mass$`trial_day:temp_label`,
+            aes(x = trial_day, y = estimate__,
+                color = temp_label, linetype = temp_label),
+            linewidth = 1.5, show.legend = F) +
+  geom_ribbon(data = ce_95_dyn_wet_mass$`trial_day:temp_label`,
+              aes(x = trial_day, y = estimate__,
+                  ymin = lower__, ymax = upper__,
+                  fill = temp_label), 
+              alpha = 0.2) +
+  geom_ribbon(data = ce_80_dyn_wet_mass$`trial_day:temp_label`,
+              aes(x = trial_day, y = estimate__,
+                  ymin = lower__, ymax = upper__,
+                  fill = temp_label), 
+              alpha = 0.4) +
+  geom_point(data = empirical_means_rmr_dyn_wet_mass,
+             aes(x = plot_day, y = emp_mean_rmr,
+                 shape = temp_label, fill = temp_label),
+             size = 4, color = "black", position = pd) +
+  # geom_point(data = data_wet_mass_rmr_dynamic_temp,
+  #            aes(x = trial_day, y = absolute_rate_vo2_mg_o2_per_hour,
+  #                shape = temp_label, fill = temp_label),
+  #            size = 1) +
+  scale_color_manual(values = c(
+    "ivory4", # La Nina 18-14
+    "black" # El Nino 21-18
+  )) +
+  scale_shape_manual(values = c(
+    22, # La Nina
+    23 # El Nino
+  )) +
+  scale_fill_manual(values = c(
+    "ivory4", # La Nina
+    "black" # El Nino
+  )) +
+  scale_linetype_manual(values = c(
+    1, # La Nina
+    3 # El Nino
+  )) +
+  scale_y_continuous(
+    breaks = scales::pretty_breaks(n = 6),
+    labels = scales::number_format(accuracy = 1)
+  ) +
+  labs(
+    x = "days of exposure",
+    # y = expression("respiration rate (mgO"["2"]*"h"^-1*")"),
+    y = NULL,
+    shape = NULL,
+    color = NULL,
+    title = NULL,
+    fill = NULL
+  ) +
+  gg_options() +
+  theme(
+    legend.position = c(0.6,0.6)
+  )
+
+p_dyn_wet_mass_rmr
+
+# Figure 1: a) (constant) RMR x temp x pco2 ;b) (El Nino & La Nina) RMR x temp x time ----
+p_respiration_multi <- cowplot::plot_grid(
+  egg::tag_facet(p_temp_pco2_rmr, tag_pool = c("a")), 
+  egg::tag_facet(p_dyn_wet_mass_rmr, tag_pool = c("b"))
+)
+
+p_respiration_multi
+
+ggsave("./Figures/Final/Respiration_Multi.png", p_respiration_multi,
+       units = "in", width = 12, height = 6)
+ggsave("./Figures/Final/Respiration_Multi.pdf", p_respiration_multi,
+       units = "in", width = 12, height = 6)
+ggsave("./Figures/Final/Respiration_Multi.jpg", p_respiration_multi,
+       units = "in", width = 12, height = 6)
+
+# Model constant and El Nino/La Nina jointly at pco2 = 600 uatm ----
+brms_formula_full_const_dyn <- bf(absolute_rate_vo2_mg_o2_per_hour ~ 
+                          log(afdm_g) +
+                          temp_deg_c +
+                          (1|tank_id))
+
+priors_const_dyn <- c( 
+  prior(normal(0,10), class = "b"),
+  prior(student_t(3, 0.5, 5), class = "Intercept"),
+  prior(student_t(3, 0, 2.5), lb = 0, class = "sd"),
+  prior(gamma(0.01, 0.01),lb = 0, class = "shape")
+)
+
+# fit model
+fit_metabolism_dynamic_const_temp_afdm_rmr_full <- brm(
+  formula = brms_formula_full_const_dyn, 
+  data = data_metabolism_const_temp_dynamic_temp,
+  family = brms_fam,
+  cores = cores,
+  prior = priors_const_dyn,
+  sample_prior = "yes",
+  save_pars = save_pars(all = TRUE),
+  init = 0,
+  iter = iterations,
+  warmup = warmup,
+  control = control_list,
+  file_refit = file_refit,
+  backend = backend,
+  seed = seed,
+  file = "./Model_Output/metabolism_dynamic_const_temp_afdm_rmr_full"
+)
+
+# Post hoc pairwise comparisons (constant & El Nino/La Nina) by temperature ----
+ems <- emmeans(fit_metabolism_dynamic_const_temp_afdm_rmr_full, ~ temp_deg_c + log(afdm_g))
+
+cont_temp <- contrast(ems, "pairwise", ratios = TRUE, type = "response")
+
+emmeans::hpd.summary(cont_temp, 
+                     prob = 0.95)
+
+cont_posterior_temp <- gather_emmeans_draws(cont_temp)
