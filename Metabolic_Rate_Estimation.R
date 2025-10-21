@@ -340,7 +340,7 @@ pp_check(fit_all$lin_add, ndraws = 50)
 # Save session info for provenance
 sink("./Model_Output/sessionInfo_RMR.txt"); print(sessionInfo()); sink()
 
-# Visualize conditional effects for constant temperatures ----
+# Visualize conditional effects for constant ----
 # selected_model <- fit_all[[winner]]
 selected_model <- fit_all[["full"]]
 
@@ -413,7 +413,7 @@ df_empirical_means <- rbind(empirical_means_rmr, empirical_means_rmr_dyn) %>%
 pd <- position_dodge(width = 0.2)
 
 p_temp_pco2_rmr <- ggplot() +
-  geom_line(data = ce_95$`temp_deg_c:pco2_uatm`,
+  geom_line(data = ce_95_const$`temp_deg_c:pco2_uatm`,
             aes(x = temp_deg_c, y = estimate__,
                 color = pco2_uatm, linetype = pco2_uatm),
             linewidth = 1.5, position = pd, show.legend = F) +
@@ -470,7 +470,7 @@ p_temp_pco2_rmr <- ggplot() +
   scale_x_continuous(breaks = c(10,13,16,17,18,20)) +
   labs(
     x = "temperature (°C)",
-    y = expression("respiration rate (mgO"["2"]*"h"^-1*"kg"^-1*")"),
+    y = expression("respiration rate (mgO"["2"]*"h"^-1*"g"^-1*" ash-free dry mass)"),
     shape = NULL,
     color = NULL,
     title = NULL,
@@ -506,27 +506,30 @@ emm_pop_link  <- emmeans(selected_model, ~ log(afdm_g) + temp_deg_c + pco2_uatm,
                          type = "link") # on link scale (log mu)
                          # at = list(temp_deg_c = c(10,13,16,17,18,20)))   
 
-emm_pop_resp  <- summary(emm_pop_link, type = "response")    # back-transform to response (means)
-emm_pop_resp
+emmeans::hpd.summary(emm_pop_link, 
+                     prob = 0.95, 
+                     point.est = mean,
+                     type = "response")
 # afdm_g temp_deg_c pco2_uatm response lower.HPD upper.HPD
-# 4.71       15.7 600           2.47      1.83      3.21
-# 4.71       15.7 1200          3.89      2.84      5.08
+# 4.71       15.7 600           2.49      1.83      3.21
+# 4.71       15.7 1200          3.94      2.84      5.08
 # 
 # Point estimate displayed: median 
 # Results are back-transformed from the log scale 
 # HPD interval probability: 0.95
 
-
 # 1) Differences on response scale (additive in mu)
-pairs_pop_diff <- contrast(emm_pop_link, "pairwise")
+pairs_pop_diff <- contrast(emm_pop_link, "revpairwise")
 
 emmeans::hpd.summary(pairs_pop_diff, 
                      prob = 0.95, 
                      point.est = mean,
                      type = "response")
 
-# contrast                     ratio lower.HPD upper.HPD
-# pco2_uatm600 / pco2_uatm1200 0.645     0.404     0.904
+# contrast                                                                                                                       ratio
+# afdm_g4.71379432624113 temp_deg_c15.677304964539 pco2_uatm1200 / afdm_g4.71379432624113 temp_deg_c15.677304964539 pco2_uatm600  1.61
+# lower.HPD upper.HPD
+# 1.02      2.28
 # 
 # Point estimate displayed: mean 
 # Results are back-transformed from the log scale 
@@ -542,6 +545,7 @@ emmeans::hpd.summary(cont_pco2,
                      prob = 0.95, 
                      point.est = mean,
                      type = "response")
+
 cont_posterior_pco2 <- gather_emmeans_draws(cont_pco2) 
 
 cont_temp <- contrast(ems, method = "revpairwise", by = "temp_deg_c", ratios = TRUE)
@@ -739,7 +743,7 @@ p_dyn_wet_mass_rmr <- ggplot() +
   ) +
   labs(
     x = "days of exposure",
-    # y = expression("respiration rate (mgO"["2"]*"h"^-1*")"),
+    y = expression("respiration rate (mgO"["2"]*"h"^-1*"g"^-1*"wet mass)"),
     y = NULL,
     shape = NULL,
     color = NULL,
@@ -761,11 +765,11 @@ p_respiration_multi <- cowplot::plot_grid(
 
 p_respiration_multi
 
-ggsave("./Figures/Final/Respiration_Multi.png", p_respiration_multi,
+ggsave("./Figures/Respiration_Multi.png", p_respiration_multi,
        units = "in", width = 12, height = 6)
-ggsave("./Figures/Final/Respiration_Multi.pdf", p_respiration_multi,
+ggsave("./Figures/Respiration_Multi.pdf", p_respiration_multi,
        units = "in", width = 12, height = 6)
-ggsave("./Figures/Final/Respiration_Multi.jpg", p_respiration_multi,
+ggsave("./Figures/Respiration_Multi.jpg", p_respiration_multi,
        units = "in", width = 12, height = 6)
 
 # Model constant and El Nino/La Nina jointly at pco2 = 600 uatm ----
@@ -807,5 +811,36 @@ cont_temp <- contrast(ems, "pairwise", ratios = TRUE, type = "response")
 
 emmeans::hpd.summary(cont_temp, 
                      prob = 0.95)
-
-cont_posterior_temp <- gather_emmeans_draws(cont_temp)
+# contrast                                                        ratio lower.HPD upper.HPD
+# 10 afdm_g4.82194915254237 / 13 afdm_g4.82194915254237           0.966    0.4698     1.634
+# 10 afdm_g4.82194915254237 / 16 afdm_g4.82194915254237           0.945    0.4635     1.601
+# 10 afdm_g4.82194915254237 / 17 afdm_g4.82194915254237           0.776    0.3775     1.309
+# 10 afdm_g4.82194915254237 / 18 afdm_g4.82194915254237           0.375    0.1825     0.633
+# 10 afdm_g4.82194915254237 / (18-14 afdm_g4.82194915254237)      1.049    0.5854     1.671
+# 10 afdm_g4.82194915254237 / 20 afdm_g4.82194915254237           0.153    0.0744     0.260
+# 10 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      1.464    0.8009     2.324
+# 13 afdm_g4.82194915254237 / 16 afdm_g4.82194915254237           0.978    0.4791     1.655
+# 13 afdm_g4.82194915254237 / 17 afdm_g4.82194915254237           0.803    0.3814     1.358
+# 13 afdm_g4.82194915254237 / 18 afdm_g4.82194915254237           0.388    0.1879     0.653
+# 13 afdm_g4.82194915254237 / (18-14 afdm_g4.82194915254237)      1.086    0.5816     1.704
+# 13 afdm_g4.82194915254237 / 20 afdm_g4.82194915254237           0.159    0.0759     0.269
+# 13 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      1.516    0.8374     2.414
+# 16 afdm_g4.82194915254237 / 17 afdm_g4.82194915254237           0.823    0.4041     1.394
+# 16 afdm_g4.82194915254237 / 18 afdm_g4.82194915254237           0.397    0.1878     0.666
+# 16 afdm_g4.82194915254237 / (18-14 afdm_g4.82194915254237)      1.111    0.6130     1.775
+# 16 afdm_g4.82194915254237 / 20 afdm_g4.82194915254237           0.162    0.0766     0.274
+# 16 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      1.551    0.8304     2.436
+# 17 afdm_g4.82194915254237 / 18 afdm_g4.82194915254237           0.483    0.2330     0.817
+# 17 afdm_g4.82194915254237 / (18-14 afdm_g4.82194915254237)      1.355    0.7323     2.143
+# 17 afdm_g4.82194915254237 / 20 afdm_g4.82194915254237           0.198    0.0905     0.331
+# 17 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      1.890    1.0280     2.991
+# 18 afdm_g4.82194915254237 / (18-14 afdm_g4.82194915254237)      2.803    1.5145     4.459
+# 18 afdm_g4.82194915254237 / 20 afdm_g4.82194915254237           0.409    0.1992     0.691
+# 18 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      3.916    2.1555     6.260
+# (18-14 afdm_g4.82194915254237) / 20 afdm_g4.82194915254237      0.146    0.0762     0.231
+# (18-14 afdm_g4.82194915254237) / (21-18 afdm_g4.82194915254237) 1.396    0.8565     2.033
+# 20 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      9.571    5.0757    15.378 # <- Contrast of interest
+# 
+# Point estimate displayed: median 
+# Results are back-transformed from the log scale 
+# HPD interval probability: 0.95 
