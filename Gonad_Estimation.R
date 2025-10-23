@@ -18,7 +18,8 @@ libs <- c(
   "tidybayes",
   "emmeans",
   "ggrepel",
-  "scales"
+  "scales",
+  "Hmisc"
 )
 
 lapply(libs, require, character.only = TRUE)
@@ -272,6 +273,36 @@ for (nm in names(model_set)) {
   )
 }
 
+brms_formula_full_const_dyn <- bf(estimated_dry_gonad_production_g ~ 
+                                    log(spheroid_volume_ml) + 
+                                    temp_deg_c + 
+                                    (1|tank_id))
+
+priors_const_dynamic <- c( 
+  prior(normal(0,10), class = "b"),
+  prior(student_t(3, 1.2, 5), class = "Intercept"),
+  prior(student_t(3, 0, 2.5), lb = 0, class = "sd"),
+  prior(student_t(3, 0, 2.5), lb = 0, class = "sigma")
+)
+
+# fit model
+fit_gonad_const_temp_dynamic_temp <- brm(
+  formula = brms_formula_full_const_dyn, 
+  data = data_gonad_const_temp_dynamic_temp,
+  family = brms_fam,
+  cores = cores,
+  prior = priors_const_dynamic,
+  sample_prior = "yes",
+  save_pars = save_pars(all = TRUE),
+  init = 0,
+  iter = iterations,
+  warmup = warmup,
+  control = control_list,
+  file_refit = file_refit,
+  backend = backend,
+  file = "./Model_Output/gonad_temp_const_dynamic_full"
+)
+
 # Model selection based on LOO stacking weights ----
 fit_all <- lapply(fit_all, add_criterion, criterion = "loo", reloo = FALSE)
 loos    <- lapply(fit_all, \(x) x$criteria$loo)
@@ -512,6 +543,7 @@ emmeans::hpd.summary(cont_overall,
 full_model <- readRDS("./Model_Output/gonad_temp_oa_full.rds")
 full_model$formula
 # estimated_dry_gonad_production_g ~ log(spheroid_volume_ml) + gp(temp_deg_c, k = 5, c = 5/4, by = pco2_uatm) + (1 | tank_id) 
+selected_model <- full_model
 
 ce_95_gonad_constant <- brms::conditional_effects(selected_model, 
                                                   robust = F, prob = 0.95)
@@ -653,29 +685,6 @@ ggsave("./Figures/Gonad.png", p_gonad_pco2_temp,
        units = "in", width = 8, height = 8)
 ggsave("./Figures/Gonad.jpg", p_gonad_pco2_temp,
        units = "in", width = 8, height = 8)
-
-brms_formula_dynamic <- brms::bf(absolute_rate_vo2_mg_o2_per_hour ~ 
-                                   log(afdm_g) +
-                                   temp_deg_c +
-                                   (1|tank_id))
-# fit model
-fit_metabolism_dynamic_temp_afdm_rmr_full <- brm(
-  formula = brms_formula_dynamic, 
-  data = data_afdm_rmr_dynamic_temp,
-  family = brms_fam,
-  cores = cores,
-  prior = priors_dynamic,
-  sample_prior = "yes",
-  save_pars = save_pars(all = TRUE),
-  init = 0,
-  iter = iterations,
-  warmup = warmup,
-  control = control_list,
-  file_refit = file_refit,
-  backend = backend,
-  seed = seed,
-  file = "./Model_Output/metabolism_dynamic_temp_afdm_rmr_full"
-)
 
 # model gonad mass at constant temp -----------------------------------------
 brms_fam <- gaussian()
