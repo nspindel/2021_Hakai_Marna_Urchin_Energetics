@@ -523,7 +523,7 @@ emmeans::hpd.summary(emm_pop_link,
 # Results are back-transformed from the log scale 
 # HPD interval probability: 0.95
 
-# 1) Differences on response scale (additive in mu)
+# Differences on response scale (additive in mu)
 pairs_pop_diff <- contrast(emm_pop_link, "revpairwise")
 
 emmeans::hpd.summary(pairs_pop_diff, 
