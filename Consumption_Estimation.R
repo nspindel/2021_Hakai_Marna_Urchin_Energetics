@@ -83,7 +83,7 @@ chains       <- 4
 iterations   <- 18000
 warmup       <- 2000
 control_list <- list(max_treedepth = 15, adapt_delta = 0.95)
-file_refit   <- "always"
+file_refit   <- "on_change"
 backend      <- "cmdstanr"
 seed         <- 123
 brms_fam     <- Gamma(link = "log")

@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<accession manifest_version="2">
+  <head>
+    <id>0208638</id>
+    <version>7.7</version>
+    <timestamp>2025-02-07 21:30:31+00</timestamp>
+    <host>engine-1.ams.ncei.noaa.gov</host>
+    <directory>/nodc/archive/arc0152/0208638/7.7</directory>
+    <file_count>46</file_count>
+    <byte_count>185095580</byte_count>
+  </head>
+  <body>
+    <files>
+      <file>
+        <path>NCEI-Readme.txt</path>
+        <digest algorithm="md5">e91932714ba31f21222c897c53a16b96</digest>
+        <digest algorithm="sha1">82edb6b02edde6773d1dbf60f0daa14dd0a2399a</digest>
+        <digest algorithm="sha256">8a28ff0cfd348380edf08df45dffd3af0f7b21e36693b33c2caacf099fc00e47</digest>
+        <digest algorithm="sha384">5f34016a6e2d1509b8a30b4831c1a216df54bb1e865cea0fb6a1ce6f94ac19c39f8abea4ce4fd1d2fc9dbbcc808a7158</digest>
+        <digest algorithm="sha512">3ef7e6ffc7c31d8f016ae4c3654e4476ffebdeef8984c1cca0da3cd3b8410e5b19b0d985d06ecd58609ddce2f39a6add62c08580e018351ab2827c4b06da39c2</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>7</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>1847</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2018-06-07 19:47:08+00</modtime>
+        <changetime>2025-02-07 21:29:22+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>7602341</inode>
+      </file>
+      <file>
+        <path>about</path>
+        <digest algorithm="md5">d41d8cd98f00b204e9800998ecf8427e</digest>
+        <digest algorithm="sha1">da39a3ee5e6b4b0d3255bfef95601890afd80709</digest>
+        <digest algorithm="sha256">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</digest>
+        <digest algorithm="sha384">38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b</digest>
+        <digest algorithm="sha512">cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e</digest>
+        <type_category>irregular</type_category>
+        <type>directory</type>
+        <permissions>drwxrwxr-x</permissions>
+        <linkcount>2</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>4096</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2025-02-03 16:58:12+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:22+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>6324232</inode>
+      </file>
+      <file>
+        <path>about/0-email.txt</path>
+        <digest algorithm="md5">c0ef11b87678b9e96b0bb3fe047a6705</digest>
+        <digest algorithm="sha1">47a4b6cac0285a4028934bd986c4469e4afc06e8</digest>
+        <digest algorithm="sha256">0276a8e966b6d99a44f01f210ee5a1d0841871be916f7920d54db37478f6a83d</digest>
+        <digest algorithm="sha384">1bb40869cdd5668556fa57a4330ab4da72aafeb054147cc6b47bebcd8122cd5cd42711da92d7f9491642ec62583cfc56</digest>
+        <digest algorithm="sha512">0522aa73bc05617a6011fc430aa2068296f07e5e3ff9e6c2bacf8b11f9c6c24400f110db9a56111f96fb9df3aca7786a244270c5f3e12613b97a98e4d215c350</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>7</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>981</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2020-01-29 19:23:39+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>7602342</inode>
+      </file>
+      <file>
+        <path>about/0208638_lonlat.txt</path>
+        <digest algorithm="md5">4ac635c960d8498ff17fc282631d475d</digest>
+        <digest algorithm="sha1">b5a4981bce2e61a9ee6900312e97fe7923ffb815</digest>
+        <digest algorithm="sha256">555958e5862a68f31579700a2cdec39e84d23cf6f1b99d9267a2fc6a14971550</digest>
+        <digest algorithm="sha384">859988c44081e61b3ac3ecf57c387516c4c22330dd9c3651a57e3d89ec9844aca0da1f23abb807c3f61c3c97d6c3ccc2</digest>
+        <digest algorithm="sha512">11aff352a00692a4a5749a383262eaed382d4d2737ba1671a9f0ae511d2594059922419119d799ea7e6ca4bb488f84c82f3755bd69bfa65dd84785820ac1f4c7</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>7</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>15</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2020-01-29 19:26:22+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>7602343</inode>
+      </file>
+      <file>
+        <path>about/0208638_map.jpg</path>
+        <digest algorithm="md5">761ae20cab10ffe72a7c0ddafbf0b9b8</digest>
+        <digest algorithm="sha1">a619dd75e88e22aed715ff09d0f8a7f47bd49ee5</digest>
+        <digest algorithm="sha256">0205678d457ad8d4928993303aff3c1851beef4675ad405b4c88db64df62c28c</digest>
+        <digest algorithm="sha384">dd8b8eb76e0edca07de68f9daec2de011fc695c61bb6210f1e5b987645ae4ed268b63daf41810ed3ceaebaa9270ba4be</digest>
+        <digest algorithm="sha512">d1fc28096b100d954a5c26189bdaf930a9ce180afefd0ee4b717a94f3bd8be666c77f2a1811a84a2a588e90bf78fdea68c127d806bf1a34c8e599efcf9beb593</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rw-rw-r--</permissions>
+        <linkcount>7</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>226051</size>
+        <blksize>32768</blksize>
+        <blocks>448</blocks>
+        <modtime>2020-01-29 19:26:39+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>7602344</inode>
+      </file>
+      <file>
+        <path>about/1-email.txt</path>
+        <digest algorithm="md5">7915449847c3ccc63a0baa87c9345033</digest>
+        <digest algorithm="sha1">e09013da0430cea58b6c7d46dd1c35dd8f0f6c1a</digest>
+        <digest algorithm="sha256">5fd4c944573b78718193de4efa3337205ac0123dbb46bbce51eba901914c4164</digest>
+        <digest algorithm="sha384">c60906229a9a3fdd430d94a1b5cbfaa661d6a72f8d2b535c65bba05184ef2c4e48f134923a41b430f8bd33f1b5592a29</digest>
+        <digest algorithm="sha512">4737323ad4dbb2cba549a01725097dc87ce04994bc2fc37289bea6fcf529fd3a53e228d91ed618bb9400f7246f6f82ab295e4d018c81f79b3974920f8f8ce3e2</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>1029</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2021-01-26 19:31:51+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>7602494</inode>
+      </file>
+      <file>
+        <path>about/2-email.txt</path>
+        <digest algorithm="md5">ee80e49fbe639407e5b765ac90791e97</digest>
+        <digest algorithm="sha1">b360942b551e0c116457d8edd41480f2791ec388</digest>
+        <digest algorithm="sha256">34abedf71b9ec57c4310a713440f1048e897f09ea1341cb48c7fef888794ffad</digest>
+        <digest algorithm="sha384">360e32dd0056070f4c72c0b70c47c419554075527b08ed61d513cd59c482f39d72b5435ac84e23260a87e356d0da90c0</digest>
+        <digest algorithm="sha512">5f582af81eb44d6d5ff55af75a1b4241852e453c176eaa1bd9c623d1d94917235f97b684da17f0dc77ca4f7e744f5e0a1c80f4556cb4ab901acab6afba097371</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>5</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>915</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2021-05-04 14:41:50+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>7733304</inode>
+      </file>
+      <file>
+        <path>about/3-email.txt</path>
+        <digest algorithm="md5">e5184d3db73e2218f77adacb7e1d935a</digest>
+        <digest algorithm="sha1">b41196e8889fb2bf63df674ff355a7a31965ee6f</digest>
+        <digest algorithm="sha256">b238c920ef31d0ec0d03b34b0c3758e8cfce6b8e08ca26522415fc2239c0e035</digest>
+        <digest algorithm="sha384">7edd6814658d7ac1fe82e6b70acfad33ee9e463245ff596e37652e1195330814916acc31b3f5ebfa6543883c95e1c0e0</digest>
+        <digest algorithm="sha512">c4571d79d4201614a345390a07802c4a76b89c555f3dce6afef433d885b1e6754bb5d288c3988cea8982eb34b32d28af2bffb967f9f3d77e2b98b7a393df81f3</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>4</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>905</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2022-01-12 19:14:58+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>7864588</inode>
+      </file>
+      <file>
+        <path>about/4-email.txt</path>
+        <digest algorithm="md5">a3076d97e765120fd9ab5584dd5f37e7</digest>
+        <digest algorithm="sha1">cbd6aeaa5ee1f16ecd4e004b9d21ebeceea0f43e</digest>
+        <digest algorithm="sha256">fef69102b3dd5c036a766d93a0ca2ed53f3d5b64aba5615b895ff0f59182dc2d</digest>
+        <digest algorithm="sha384">8c72bef29de5413b094d16fed654e072cf599c546ea75bf27d13ae6d78d84ed0e91075c5643dabe3bba86ba6c49c6335</digest>
+        <digest algorithm="sha512">14933f665ee490d7588ce2638a9a1fef9966d60914d4eec408bdb1f0beebb73ff249e985d5eee382b18684da1b572ad17101dba947a627af43e9ff35f145f16e</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>3</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>906</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2023-01-25 17:49:51+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>8126471</inode>
+      </file>
+      <file>
+        <path>about/5-email.txt</path>
+        <digest algorithm="md5">c606bea362ac87c00b6d8486f559a003</digest>
+        <digest algorithm="sha1">191ce8fe5ebb87b5b69dd0fb6eebea17ac6d931e</digest>
+        <digest algorithm="sha256">751e8daf9a4c2532727f5662c1948a56123e8ebfc161d36d13d6c1f85dc3402b</digest>
+        <digest algorithm="sha384">74bd24260a384c1d11505ce2c51a3e31e02348fec9565a37fb66dcae4c1a686c2176048e33ed26c4962531d5f2c50bac</digest>
+        <digest algorithm="sha512">6d5adbb82c55917bdb60be397ce87042bb926a3f4d179ca674aad5f9ca98927756c620d3667da56bb12d808d33f938c2ac1df23d563c2cd98452c07614c79fe4</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>2</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>909</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2024-01-04 16:01:24+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>6293086</inode>
+      </file>
+      <file>
+        <path>about/6-email.txt</path>
+        <digest algorithm="md5">73bd5ee5b8a807a67d2a57234e90c6d3</digest>
+        <digest algorithm="sha1">2b96e47500b14c29fd7397fac566af4cb89e51e2</digest>
+        <digest algorithm="sha256">e6fec4431a3815c9176d86d7893acc2bda16bf4d85b499201d1b94cd1030eeee</digest>
+        <digest algorithm="sha384">c69e15f80ce2ad161b6860398b943fd50a94d1796dbb7d5477574b254e05e8007882570901c0e8a3d80820ad63c5320a</digest>
+        <digest algorithm="sha512">b21505756825facd490f329250e2a97deec1cb0577c5afda1a1fa28062a2291593d90f2d0915841e328b2f7cb5c6506b8d471028d034b00fc0cd419b10f4a21f</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-rw-r--</permissions>
+        <linkcount>1</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>690</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2025-02-03 16:54:36+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>6293109</inode>
+      </file>
+      <file>
+        <path>about/journal.txt</path>
+        <digest algorithm="md5">af44de6c43c88723fa9290b17408144f</digest>
+        <digest algorithm="sha1">f5f6e99dfc0ec1ebb703947d5f081a75db797a57</digest>
+        <digest algorithm="sha256">d498c36e152d48e1b5e5afc1b4e979cde4bf2b637c68bbebaad6ad9229db0b94</digest>
+        <digest algorithm="sha384">13de4f628251356003b9a60e30f7a95d1062fba029bd945771cbc545aeb1a3627e69c21f289b9994460bfb6dd836cdef</digest>
+        <digest algorithm="sha512">dfdc11798904ae309eef85e4b3016e0426c85f19bb3878570edb509ac22f9289ff2142ec9725ef44ead62997beff3bd8c265c4fb3c6591790fec200f609aaf34</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-rw-r--</permissions>
+        <linkcount>1</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>15151</size>
+        <blksize>32768</blksize>
+        <blocks>32</blocks>
+        <modtime>2025-02-03 16:56:54+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>6293110</inode>
+      </file>
+      <file>
+        <path>data</path>
+        <digest algorithm="md5">d41d8cd98f00b204e9800998ecf8427e</digest>
+        <digest algorithm="sha1">da39a3ee5e6b4b0d3255bfef95601890afd80709</digest>
+        <digest algorithm="sha256">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</digest>
+        <digest algorithm="sha384">38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b</digest>
+        <digest algorithm="sha512">cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e</digest>
+        <type_category>irregular</type_category>
+        <type>directory</type>
+        <permissions>drwxrwxr-x</permissions>
+        <linkcount>4</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>4096</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2020-01-29 19:27:13+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:22+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>6324233</inode>
+      </file>
+      <file>
+        <path>data/0-data</path>
+        <digest algorithm="md5">d41d8cd98f00b204e9800998ecf8427e</digest>
+        <digest algorithm="sha1">da39a3ee5e6b4b0d3255bfef95601890afd80709</digest>
+        <digest algorithm="sha256">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</digest>
+        <digest algorithm="sha384">38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b</digest>
+        <digest algorithm="sha512">cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e</digest>
+        <type_category>irregular</type_category>
+        <type>directory</type>
+        <permissions>drwxrwxr-x</permissions>
+        <linkcount>2</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>4096</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2025-02-03 16:58:38+00</modtime>
+        <changetime>2025-02-07 21:29:25+00</changetime>
+        <acctime>2025-02-07 21:29:23+00</acctime>
+        <sumtime>2025-02-07 21:30:31+00</sumtime>
+        <inode>6332424</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920141219_QuadraSUPERCO2_Dec2014_Apr2016_v2.csv</path>
+        <digest algorithm="md5">5639b6e08c95f908d7e431653e2b8f42</digest>
+        <digest algorithm="sha1">c6c0aa62dd2a4b6c39b4525dd3ef5a6b7c08e5cf</digest>
+        <digest algorithm="sha256">d38a6cdde5a437ec1bcb1cbc8d3df92b6f4b28fdc53454f74eea18210af6c812</digest>
+        <digest algorithm="sha384">3ded9c925f28b5877b36ebdfec0c5156068195185d237a73768f984612acebda3acc1c5493662bcaa63801e58354ce78</digest>
+        <digest algorithm="sha512">49ef641a6eca5815251ca9202d984a5ae62986c17b02ca236253c667459cf65362958272c57cd6c267dad19ceeb578c0804f3bbf4b8ac89a56973bfb2c700b71</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>5</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>22486006</size>
+        <blksize>32768</blksize>
+        <blocks>43920</blocks>
+        <modtime>2021-05-04 14:45:37+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:25+00</acctime>
+        <sumtime>2025-02-07 21:30:32+00</sumtime>
+        <inode>7733306</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920141219_QuadraSUPERCO2_Dec2014_Apr2016_v2_Metadata.pdf</path>
+        <digest algorithm="md5">d3317445d63036d93b20bd706b8f63b5</digest>
+        <digest algorithm="sha1">8360c8f40b744f5c361dc53f6d518e3e50410a2e</digest>
+        <digest algorithm="sha256">4b3a9eb0dab3423d6a11cbe645e3e9f9859ee5348cdd409e4f0db514e70cb664</digest>
+        <digest algorithm="sha384">48c429e0de68d0e0340e5da7c00eded1857390510903b7e0895b3006b2ae9d7eda587f1ecfd6f4586dcfd21a24fd9921</digest>
+        <digest algorithm="sha512">0f8882f45581c79f27d6a90ec1e30518065efe3527e60b80217cb9f03f4c6d67ecfe9e6af04c2d9fca00bb2ba02e9146df99f65edc707350509cfe1fca8d0e57</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>5</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>105873</size>
+        <blksize>32768</blksize>
+        <blocks>208</blocks>
+        <modtime>2021-05-04 14:47:18+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:26+00</acctime>
+        <sumtime>2025-02-07 21:30:32+00</sumtime>
+        <inode>7733307</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920141219_SOCAT_metadata_underway_HakaiInstitute_QIFS_SUPERCO2_Dec2014_Apr2016_v2.xls</path>
+        <digest algorithm="md5">a3660a2481e4e51bf62952e40f0a1a41</digest>
+        <digest algorithm="sha1">29850934c9c847ded83be6631e770f59e9de1a20</digest>
+        <digest algorithm="sha256">dadd4bd623f6a033d9b2fc69fdd59316ca6629673104bb579f472b0d55643e17</digest>
+        <digest algorithm="sha384">922b9179acbee96aaa2eddbfbeca42861264b0bd05e4eac09940112a4b2469b4fed5187db0a6bad3959bc35ebe042de9</digest>
+        <digest algorithm="sha512">60cb1c7321e72a41a700a52d508847a1450936d32133407553f36627bc523f8106a38a52c55a0ba99dc401c9fdc9efb5bcd993fb367a51700eb8e9d6fafb8537</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>5</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>41984</size>
+        <blksize>32768</blksize>
+        <blocks>88</blocks>
+        <modtime>2021-05-04 14:47:26+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:26+00</acctime>
+        <sumtime>2025-02-07 21:30:32+00</sumtime>
+        <inode>7733308</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920160407_QuadraBoL_Apr2016_Dec2017.csv</path>
+        <digest algorithm="md5">488e87128b043039a4fc118794116b22</digest>
+        <digest algorithm="sha1">fcad6f5645cd261a41ee21d9198717e7cf2741d0</digest>
+        <digest algorithm="sha256">eef2e9bad409b6d6148f96e3a37e930a9e875197075c0a811e380598033af6ff</digest>
+        <digest algorithm="sha384">8fe91fc373f9edbac747d3a0e170ad379619b29f485b404e7884dbf77c97c5dde3721013ec3b87055f12ecf61b9146dc</digest>
+        <digest algorithm="sha512">0632791ce390094d842d961aa9ee191332ac6915ebae4c8528ef1adf9ab22786352571e7356b79a7bf730e9547fe12ca5c719df4bc68f9ce577b1d8a3eecd60d</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>30481291</size>
+        <blksize>32768</blksize>
+        <blocks>59536</blocks>
+        <modtime>2021-01-26 19:38:40+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:26+00</acctime>
+        <sumtime>2025-02-07 21:30:34+00</sumtime>
+        <inode>7602499</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920160407_QuadraBoL_Apr2016_Dec2017_metadata.pdf</path>
+        <digest algorithm="md5">f869b6bbbfe57f095c10d4e99c6636d7</digest>
+        <digest algorithm="sha1">8fc560515f4053f8fdbdafbd8fc072bd522836ad</digest>
+        <digest algorithm="sha256">b752da9cb98ed6163932a005e614f25b2347480ad54134196c3d5c6fc0599fed</digest>
+        <digest algorithm="sha384">e27dbfa3b6a477945a8d59ae3434b9209053111ee6b887d5a5f2377921195ef9766cf3137da62c5b4254f0519718bb5b</digest>
+        <digest algorithm="sha512">a7dc5a089203e92b4fdbb4d83ce754a757cbfb28da9bed75ef23a68a4a5834c913addf0334a19536e15e43fb3b80d2b13fdfc462ab9780ce3f36cee12c942037</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>105866</size>
+        <blksize>32768</blksize>
+        <blocks>208</blocks>
+        <modtime>2021-01-26 19:37:54+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:27+00</acctime>
+        <sumtime>2025-02-07 21:30:34+00</sumtime>
+        <inode>7602500</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920160407_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Apr2016_Dec2017_v2.xls</path>
+        <digest algorithm="md5">65a24c52204b0109b0a8a751e828ac4d</digest>
+        <digest algorithm="sha1">e2b24ce6ce38b33d91628ed5748ef3132feb63c7</digest>
+        <digest algorithm="sha256">5eb9b3cd9fb8e8705e2a7f58547ad2715db1e5a671cbb0ebcbc602c5b8d38dd2</digest>
+        <digest algorithm="sha384">afc3264ce1ea3c3ae2f2dcc1e49a79d938e8e78fce7c231894a3123d3d7286db64b41ca0e954724ed910d9b5a0a8a32f</digest>
+        <digest algorithm="sha512">89398df82c7433c8518ed2e8f03ab5b2368ea1c22cdbef9ab01d53252ec7930c62cbd4cdd54867e2ff49d703768c976eab822c577c405da92b3cb30eda13258d</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>41984</size>
+        <blksize>32768</blksize>
+        <blocks>88</blocks>
+        <modtime>2021-01-26 19:41:08+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:27+00</acctime>
+        <sumtime>2025-02-07 21:30:34+00</sumtime>
+        <inode>7602501</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920180101_QuadraBoL_Jan2018_Dec2019.csv</path>
+        <digest algorithm="md5">42756b98d932742bbc6ee36b86c32acf</digest>
+        <digest algorithm="sha1">b91094d7ae1be74e83525b8ad96f8f67436e5170</digest>
+        <digest algorithm="sha256">3658627968bb941b5935306e351a3fe2ac504d7760a7e1a28bd27ef9a0876f75</digest>
+        <digest algorithm="sha384">50f7f1eee6c126e08ce476174aeda60789f6f867bca7e1b0f2fb39f3ccef303ab7a0809b3e092185f2eb49cb1b6eac51</digest>
+        <digest algorithm="sha512">dd29aaa274c7b5dfd56bec6c504d5003ee2a7310c7df2d64efdd9b3ec57462359337256a67e1f888e12ff67fd8803fbd2b2d5fd265f42e9283f3093f3ea2ab54</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>37619585</size>
+        <blksize>32768</blksize>
+        <blocks>73480</blocks>
+        <modtime>2021-01-26 19:39:09+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:28+00</acctime>
+        <sumtime>2025-02-07 21:30:35+00</sumtime>
+        <inode>7602502</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920180101_QuadraBoL_Jan2018_Dec2019_metadata.pdf</path>
+        <digest algorithm="md5">3b5095b2959a57ffecee91fe34ecb949</digest>
+        <digest algorithm="sha1">00e1697245fa039a6a3c5f2d26b1c7e33d8ed47c</digest>
+        <digest algorithm="sha256">c6807937704bfd821260fe12ef7db273cc8564a1792fdd834a4e4776862a9ad2</digest>
+        <digest algorithm="sha384">8ee209f498e42c66b4e38bd9de71ea70da370cd1f676f63415c586bcb903bdacb624309c695da08a5cc731545cdf4d74</digest>
+        <digest algorithm="sha512">302e45b4b2db319ea96dd0f8e555bd8558f3efa83f0e706603f147645da380f94b6a013e07f58d2abff3c44981a61afa8430cbea76c69aaa9b063339326bcf9e</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>105866</size>
+        <blksize>32768</blksize>
+        <blocks>208</blocks>
+        <modtime>2021-01-26 19:37:54+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:29+00</acctime>
+        <sumtime>2025-02-07 21:30:35+00</sumtime>
+        <inode>7602503</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920180101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2018_Dec2019_v2.xls</path>
+        <digest algorithm="md5">432be3734da637d163507050d9e68ac5</digest>
+        <digest algorithm="sha1">140d4620b1f4515a7217fbc6994f529b0cd2bb2c</digest>
+        <digest algorithm="sha256">a53f0868be6f55d44a9d501147f23bc7c3be388d0b4332b73b76b1540b420449</digest>
+        <digest algorithm="sha384">d628982d7f496dab2c6a1d8e76c0e88b27405499915e42615477b4b1edec6080d1ffc475f5777116eba9bee16253f6d1</digest>
+        <digest algorithm="sha512">5a6cd23170e85b1a3b22546785cf00d343ffb53b8ec13ae9b143bdc0cb2ffcf8d048fd75c9154b458058d75e374723277f5b53a4b8f6300fe71a93cec6456244</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>41984</size>
+        <blksize>32768</blksize>
+        <blocks>88</blocks>
+        <modtime>2021-01-26 19:41:08+00</modtime>
+        <changetime>2025-02-07 21:29:23+00</changetime>
+        <acctime>2025-02-07 21:29:29+00</acctime>
+        <sumtime>2025-02-07 21:30:35+00</sumtime>
+        <inode>7602504</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920200101_QuadraBoL_Jan2020_Dec2020.csv</path>
+        <digest algorithm="md5">8f0a1f4b20792f325e21ec589a95f379</digest>
+        <digest algorithm="sha1">82aab764c29317a5f6cd6e7eb8cfa9fce81d3b2d</digest>
+        <digest algorithm="sha256">0cedefdd1d1ce4e305b7d7f816f7187dc72394112ad5b9c960cec1fc9e19e24d</digest>
+        <digest algorithm="sha384">0a73b7346587bbfddd1ee320b9ec8a988860d24f5548125e07c0d221df18e9e6e546dc855c321c5bad6f476a253a4c0a</digest>
+        <digest algorithm="sha512">1d44b8f2e405dc8832bc243556f5a5355131037bd676e50d682fe253b018e5a0b7e496f05a2b50dc71b487c90088d675ed6db64b512df32a2a0f5115fa5c484b</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>18874688</size>
+        <blksize>32768</blksize>
+        <blocks>36872</blocks>
+        <modtime>2021-01-26 19:39:24+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:29+00</acctime>
+        <sumtime>2025-02-07 21:30:36+00</sumtime>
+        <inode>7602505</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920200101_QuadraBoL_Jan2020_Dec2020_metadata.pdf</path>
+        <digest algorithm="md5">e4208310d28295581641fcc993bc9b48</digest>
+        <digest algorithm="sha1">e12ce37a09d199db54547d25a1604f04445f4003</digest>
+        <digest algorithm="sha256">a4f5ef447b00d30a127a47b1907e54b96e468706959cf0bac99b93176a479fc8</digest>
+        <digest algorithm="sha384">1b301606ef3e48ca8b8830cfab39e9f416a94e886204b593b32413866ddb743ddbeca94b53cef89a5b741ba57aac2f5d</digest>
+        <digest algorithm="sha512">9f824735d7eebd43fe54e69d453cc43322dbe22bfb1ba0c73e235ee0677356720765fbd0694a076a9c4d0f868270801ee2d923ed28801cf5a963ec46e754fcbe</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>104297</size>
+        <blksize>32768</blksize>
+        <blocks>208</blocks>
+        <modtime>2021-01-26 19:37:55+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:30+00</acctime>
+        <sumtime>2025-02-07 21:30:36+00</sumtime>
+        <inode>7602506</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920200101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2020_Dec2020_v1.xls</path>
+        <digest algorithm="md5">f0c8fecf73fb104551e01d6f5d857005</digest>
+        <digest algorithm="sha1">c273fdbb6d04ea6fd08ac4f0a4f04582a8cb7186</digest>
+        <digest algorithm="sha256">dfd1e5b7ff17349d290661e2d0b1a6ee79e695e9a5de3b8ac900295b82123e01</digest>
+        <digest algorithm="sha384">c9e7a2646646154962db0080747d64dbc4dd1ba9152e8fbb02f54c90b37305015d27c6f6943166a6278ea147331413ed</digest>
+        <digest algorithm="sha512">ed6492b4e7dddebe8398859e54cb0f9ba6ba035d875e7924c7c3aca4eff167c234470ea5d59446d6bedce339cce8ed22d8bd2a7b13387d7f5f9d92e1e4ec4421</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>41472</size>
+        <blksize>32768</blksize>
+        <blocks>88</blocks>
+        <modtime>2021-01-26 19:41:09+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:30+00</acctime>
+        <sumtime>2025-02-07 21:30:36+00</sumtime>
+        <inode>7602507</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920210101_Hakai_OAP_metadata_QuadraBoL_Jan2021_Dec2021_v1.pdf</path>
+        <digest algorithm="md5">7e201f7f5ea9d7db05704b512154b80d</digest>
+        <digest algorithm="sha1">9b03a54b0ca81d3fd7315310a437522921085d12</digest>
+        <digest algorithm="sha256">b1576bd8787a95257784874ebfff0cd83df471ff5c8c3c0c2c058a682545c073</digest>
+        <digest algorithm="sha384">90a55b739c71d7062382d2baaa146ef7ea82ffeb00f5ca4c668fddd4949f97c8ed5336ea4a0d1b0169bdeb478789aaf1</digest>
+        <digest algorithm="sha512">be19ea4fd0bf5740e444a2e377f34c71b79585ffa2f8a28304530a4d8a1562dd4a9364c0133e7bffaf527f2ac5e3e966409d8644ade0529f7b8e01a3ff0678e6</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>4</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>104650</size>
+        <blksize>32768</blksize>
+        <blocks>208</blocks>
+        <modtime>2022-01-12 19:18:45+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:30+00</acctime>
+        <sumtime>2025-02-07 21:30:36+00</sumtime>
+        <inode>7864590</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920210101_QuadraBoL_Jan2021_Dec2021.csv</path>
+        <digest algorithm="md5">faef7a7b93aefee3f82ffeb7a958da77</digest>
+        <digest algorithm="sha1">4df70d5c91d0cfa700a4f5b26ceb004a3e33c88b</digest>
+        <digest algorithm="sha256">8f850c1da2dabebdaff82ed95afe56567e4975af082a63464ff83699372af56c</digest>
+        <digest algorithm="sha384">53f2fec5bb428475d22875db4a6d5edf63091d27f02bacbecc035dfc5684cebf81cfa569c29be7a3619bb75f0547bb1e</digest>
+        <digest algorithm="sha512">235997bf89e7702df1aba14b4bb3f04c34917c21c5e0935a109d79e0a68e6b862c00af8c4013d68bfd8a308ea87c18d714510c8a9b752a4b9b7214d5a891b59f</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>4</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>23275229</size>
+        <blksize>32768</blksize>
+        <blocks>45464</blocks>
+        <modtime>2022-01-12 19:21:10+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:30+00</acctime>
+        <sumtime>2025-02-07 21:30:37+00</sumtime>
+        <inode>7864591</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920210101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2021_Dec2021_v1.xls</path>
+        <digest algorithm="md5">36065ee81c36ec2a9bcf587ba5802241</digest>
+        <digest algorithm="sha1">b7afc750923659a055801868d1c43d2170eb29a1</digest>
+        <digest algorithm="sha256">dd7b2997c1819f0d3c42e062d83bbfb206bfa41291de92e7f464dfd7b6aed550</digest>
+        <digest algorithm="sha384">418fe322e18135a61690a678db41e6a13e6008ec16a7b726d8f65ec08ed2a41dc0f16ee5f30ad83c30a9bee9b15794c8</digest>
+        <digest algorithm="sha512">6a917af7748c0c2bb327417f8e843ac550ef93d4a967d60889f5f807f669e6b782b2cd24ad89aa6d595c79aa128bd6250ba568f6b04760395f080561d1e08a2b</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rwxr-xr-x</permissions>
+        <linkcount>4</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>41472</size>
+        <blksize>32768</blksize>
+        <blocks>88</blocks>
+        <modtime>2022-01-12 19:18:53+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:30+00</acctime>
+        <sumtime>2025-02-07 21:30:37+00</sumtime>
+        <inode>7864592</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920220101_Hakai_OAP_metadata_QuadraBoL_Jan2022_Dec2022_v1.pdf</path>
+        <digest algorithm="md5">f0c7ccd7a2e14fc0570339a3aba02488</digest>
+        <digest algorithm="sha1">d1d7dd6be0ed3b47216d0e90a6074a1bef677edc</digest>
+        <digest algorithm="sha256">0183d4cbeb1343b3b212f3d1144f957ad4ca56434cfcf61d1237dd34913f14e3</digest>
+        <digest algorithm="sha384">14b7970af1c23fcd1006dab0f98c60b361c3b53b7b6738f405f63a6f623d1c92dfafccb989e77dcdcc128a8cbbf5a97e</digest>
+        <digest algorithm="sha512">caa07cd3e6eb9d15c0e69e958c30ffe1b44dc694e3c77ea16a855350c40ba63063c5f9ac070669e0a184d609f9a82f600f37e92a88325c4d800ad2fc3f1e132e</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>3</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>103979</size>
+        <blksize>32768</blksize>
+        <blocks>208</blocks>
+        <modtime>2023-01-25 17:51:17+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:30+00</acctime>
+        <sumtime>2025-02-07 21:30:37+00</sumtime>
+        <inode>8126473</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920220101_QuadraBoL_Jan2022_Dec2022.csv</path>
+        <digest algorithm="md5">c8c8eaa4ba3c4b783b02ffe8115575cb</digest>
+        <digest algorithm="sha1">5aa9b9ecdf86c83b0c8717a051ef3c88d0a5a2ec</digest>
+        <digest algorithm="sha256">f12d863cf1e6974f71f6911d39ac5321962846b0f2bdce81196c331e5bcf36e5</digest>
+        <digest algorithm="sha384">d7abf18c4d3d5bc402a65b9b1fb24342ab2ce3ff5e90c7f16f071eeaa0f878f23fa8f7928d89127c610a5ab940e231ee</digest>
+        <digest algorithm="sha512">e88b85ce51594a57f42dbba199b51346982aa671459c50c30281f5b5d1b377185b5ed7ebd5e6f40f72478a812eb885bd18f8ce03b43e31e157e7a738644f789f</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>3</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>17462696</size>
+        <blksize>32768</blksize>
+        <blocks>34112</blocks>
+        <modtime>2023-01-25 17:51:11+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:30+00</acctime>
+        <sumtime>2025-02-07 21:30:37+00</sumtime>
+        <inode>8126474</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920220101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2022_Dec2022_v1.xls</path>
+        <digest algorithm="md5">1b77ce4fa28133afc426a5ab1b30ff2d</digest>
+        <digest algorithm="sha1">5c6deeef92146d31cdd85419a7287950364e8a45</digest>
+        <digest algorithm="sha256">df1c6a7f91066eafbfe837231e3b543ecc5c2b06d4955d62986748465575f234</digest>
+        <digest algorithm="sha384">eb455b568a6f74e68028beca6ff3c6bf856ec66d76343e5fd2e8dea1a1f39f1c417ccf2d7339d4fd984d8a350fd33f9f</digest>
+        <digest algorithm="sha512">17f84f092998699b7ada3c362e8e7949431f56fcc4be137badcdf904d77d76bd92bd44a0b24862a267ffd2f561ec2a76f63a6524b915787ec2f770ad139d28eb</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>3</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>40960</size>
+        <blksize>32768</blksize>
+        <blocks>80</blocks>
+        <modtime>2023-01-25 17:51:23+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:31+00</acctime>
+        <sumtime>2025-02-07 21:30:37+00</sumtime>
+        <inode>8126475</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920230101.csv</path>
+        <digest algorithm="md5">7defad0b42573a8bafa7efbd55b596c3</digest>
+        <digest algorithm="sha1">02cce0b41792fab4a9b492c5c1e56a180d0511ed</digest>
+        <digest algorithm="sha256">1416186bb6c5e1ba84a3ddf188487050f23db48a3d198ae234259ceb0303a3df</digest>
+        <digest algorithm="sha384">47a01dfc75d87cdc8136922b32d27d92db238fb65211b32dc789774c7500ba14fbb457489d3ed94981c7af75c217a700</digest>
+        <digest algorithm="sha512">d8ad978c59500731cd515a91516fc0309c7b4e920215c8967a84b19e577ae6b7ae6dd2a10d2481aaf179f3c1049b5e886df4516be62b45cced3c2ce0f07e01ec</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>2</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>16182823</size>
+        <blksize>32768</blksize>
+        <blocks>31608</blocks>
+        <modtime>2024-01-04 16:02:10+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:31+00</acctime>
+        <sumtime>2025-02-07 21:30:38+00</sumtime>
+        <inode>6293088</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920230101_Hakai_OAP_metadata_QuadraBoL_Jan2023_Dec2023_v1.pdf</path>
+        <digest algorithm="md5">df3bd0eeab3e6437fa3e65bb009479a2</digest>
+        <digest algorithm="sha1">d1e1cdc83f2f20b7c76368adebb082a306a77727</digest>
+        <digest algorithm="sha256">68c268dcc94d6ce98a83d45a8d0a0d2426710f8af6259255df132963c6932650</digest>
+        <digest algorithm="sha384">0cffa9789f1f908b77edd8bfc5d0d169c9ffb4dbf91c5e64fa45beb8848db82889cd98df3f64dac1666123d2f21a9c66</digest>
+        <digest algorithm="sha512">82abc61d4fe4127aae0b0257cf3bd0a3266a5038cb48a204788b693a9d357db4e8ad3afa6b54b6cfcd9f94497dcdb9d414148f2376855a8dd60e5756653b85e4</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>2</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>103725</size>
+        <blksize>32768</blksize>
+        <blocks>208</blocks>
+        <modtime>2024-01-04 16:01:57+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:32+00</acctime>
+        <sumtime>2025-02-07 21:30:38+00</sumtime>
+        <inode>6293089</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920230101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2023_Dec2023_v1.xls</path>
+        <digest algorithm="md5">39a406ac55109c852aef610a1ce95889</digest>
+        <digest algorithm="sha1">93fc13f33ecb1a738a5e46eda4f20db99f631624</digest>
+        <digest algorithm="sha256">9c7557cee7b072568e4e102775cd4d2af901ed126901bb2e1183538b24b2cf63</digest>
+        <digest algorithm="sha384">e97e5b45c7a9a30e6b04e940f877f464263443e002d651eaf64d93b2cf35c610295fd6c18f8765dcf1fdc2a088010d9b</digest>
+        <digest algorithm="sha512">27796ffd879af6daa7f3e0f7b20215aff75f86bb1876118200b8e52402b318832274d02c11a6b384e5f085417eb24724c0dc8f2ec7824b772c5a6240be0c60e1</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>2</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>40960</size>
+        <blksize>32768</blksize>
+        <blocks>80</blocks>
+        <modtime>2024-01-04 16:02:15+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:32+00</acctime>
+        <sumtime>2025-02-07 21:30:38+00</sumtime>
+        <inode>6293090</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920240101.csv</path>
+        <digest algorithm="md5">302fcd5a21afc0701d7bc68bf3f0f800</digest>
+        <digest algorithm="sha1">d6c9f2234b016bfe0ffda89eb01f99b7d350eaf0</digest>
+        <digest algorithm="sha256">fa830348da97584ca3072640afaec9f61fc34191c6b91569134b3c969056a4f3</digest>
+        <digest algorithm="sha384">b88d68a493a62198befeef3361497d8d5d2c7c840faa81790028c1eed5aee2e5e4d3f4b92b022c2020042a702a64b4ba</digest>
+        <digest algorithm="sha512">66965c1fde5359228bb84a10b727335143568be706eafacdc1d2040aa5b81dbae3750773a1f583647a6db176eaa921a881163c6f9633e2ec095695c4048142bd</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-rw-r--</permissions>
+        <linkcount>1</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>17139466</size>
+        <blksize>32768</blksize>
+        <blocks>33480</blocks>
+        <modtime>2025-02-03 16:58:29+00</modtime>
+        <changetime>2025-02-07 21:29:25+00</changetime>
+        <acctime>2025-02-07 21:29:32+00</acctime>
+        <sumtime>2025-02-07 21:30:39+00</sumtime>
+        <inode>6293111</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920240101_Hakai_OAP_metadata_QuadraBoL_Jan2024_Dec2024_v1.pdf</path>
+        <digest algorithm="md5">7e41ddaf769547d25f890b0875e5c4be</digest>
+        <digest algorithm="sha1">79036642cd27bbee1987d23669e339145fd53005</digest>
+        <digest algorithm="sha256">febb3718cf04e1c0fc7aa4964892bf92d9cb5fcf6859312bd558df05c37055e8</digest>
+        <digest algorithm="sha384">64c184b97373c750dc8db8118985e4a5b98e00d0fe35219a6f5b4113dea2eb98e4b0be7f1810043e92256931587eb6cc</digest>
+        <digest algorithm="sha512">06c52207886f6e69945fd8d9ba883978c3b9234df0cd96db5415c1898e578911135070ce326ef58cff430b45cf13eb3bb3b913f0125c82c88202ad0847363aaf</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-rw-r--</permissions>
+        <linkcount>1</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>191582</size>
+        <blksize>32768</blksize>
+        <blocks>376</blocks>
+        <modtime>2025-02-03 16:58:38+00</modtime>
+        <changetime>2025-02-07 21:29:25+00</changetime>
+        <acctime>2025-02-07 21:29:33+00</acctime>
+        <sumtime>2025-02-07 21:30:39+00</sumtime>
+        <inode>6293112</inode>
+      </file>
+      <file>
+        <path>data/0-data/189920240101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2024_Dec2024_v1.xls</path>
+        <digest algorithm="md5">f7133066e02f1ec3ae461ae25617011b</digest>
+        <digest algorithm="sha1">f3a12acd27075ec791da06a0b27e2e383130d17c</digest>
+        <digest algorithm="sha256">d850469829579cfc351eb1a83e0ee8688254ea90d6fad6a6856b5726d8006cea</digest>
+        <digest algorithm="sha384">2820fab8b0407f235a4a412da5dfb3312cbdb1a6e3e271fe4df5b8f40cbe3f59e433da5cdc90986c8f51141a45d73932</digest>
+        <digest algorithm="sha512">c7e3fbcbf84446614ff2b87df74f77dd3e423f9f405d5d30a443d675a2a455a242696edc42a4bbd122295dbb6572c16bddedbf387372bb7ed87e6f5abed67d70</digest>
+        <type_category>regular</type_category>
+        <type>binary</type>
+        <permissions>-rw-rw-r--</permissions>
+        <linkcount>1</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>40960</size>
+        <blksize>32768</blksize>
+        <blocks>80</blocks>
+        <modtime>2025-02-03 16:58:33+00</modtime>
+        <changetime>2025-02-07 21:29:25+00</changetime>
+        <acctime>2025-02-07 21:29:33+00</acctime>
+        <sumtime>2025-02-07 21:30:39+00</sumtime>
+        <inode>6293113</inode>
+      </file>
+      <file>
+        <path>data/0-data/data_dictionary.txt</path>
+        <digest algorithm="md5">fc98dfee0f172083ebf3336f97db12eb</digest>
+        <digest algorithm="sha1">11179eccd4add55a8fd2cd435a1242437e00f1c5</digest>
+        <digest algorithm="sha256">960bbb22a41e8d50a5d62eee076d74fe2d8e93487d3766b7592c26fb629762a0</digest>
+        <digest algorithm="sha384">f6fadb01905dfb119b0b521a86722074973f51f3e84f249d17ef0a6457e04799a80163ec42046a857fab0fcbbc78b29b</digest>
+        <digest algorithm="sha512">dfbc97d700b1e9480e097d1705b667c7b8bcc48a648d78def80eccb9d19e89a45b1a76bcb58d950e23432d1f05751b030710cc0662f1002bdc659c853a6bc087</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>2</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>1634</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2024-01-04 16:02:34+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:33+00</acctime>
+        <sumtime>2025-02-07 21:30:39+00</sumtime>
+        <inode>6293091</inode>
+      </file>
+      <file>
+        <path>data/1-data</path>
+        <digest algorithm="md5">d41d8cd98f00b204e9800998ecf8427e</digest>
+        <digest algorithm="sha1">da39a3ee5e6b4b0d3255bfef95601890afd80709</digest>
+        <digest algorithm="sha256">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</digest>
+        <digest algorithm="sha384">38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b</digest>
+        <digest algorithm="sha512">cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e</digest>
+        <type_category>irregular</type_category>
+        <type>directory</type>
+        <permissions>drwxrwxr-x</permissions>
+        <linkcount>2</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>4096</size>
+        <blksize>32768</blksize>
+        <blocks>8</blocks>
+        <modtime>2024-01-04 19:17:25+00</modtime>
+        <changetime>2025-02-07 21:29:25+00</changetime>
+        <acctime>2025-02-07 21:29:23+00</acctime>
+        <sumtime>2025-02-07 21:30:39+00</sumtime>
+        <inode>6332425</inode>
+      </file>
+      <file>
+        <path>data/1-data/189920141219_SOCAT_metadata_underway_HakaiInstitute_QIFS_SUPERCO2_Dec2014_Apr2016_v2.csv</path>
+        <digest algorithm="md5">001b9edabd0f1f80cb82141773bf6e70</digest>
+        <digest algorithm="sha1">67cd58440427afe377cdf5172b12034f40717c2e</digest>
+        <digest algorithm="sha256">bf96d4f9ce555be410385cd62801c4b0712158958fc92546d016852def14e8a7</digest>
+        <digest algorithm="sha384">c7e5de84e09b5101fd7b47be21e0bd077561cc2be1f1f544f2a99f877a71872cb8e327bf1f520c2b03dd463c62526697</digest>
+        <digest algorithm="sha512">d90ee0f2bfd6070d99e26da849e77dbf508e12719028ad45b1ba849381f21b88e1da78ec574f8380ee9883731fa052ff18483c75889168bd16f66e4b523e4384</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>8332</size>
+        <blksize>32768</blksize>
+        <blocks>24</blocks>
+        <modtime>2021-01-26 19:43:54+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:33+00</acctime>
+        <sumtime>2025-02-07 21:30:39+00</sumtime>
+        <inode>7602508</inode>
+      </file>
+      <file>
+        <path>data/1-data/189920160407_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Apr2016_Dec2017_v2.csv</path>
+        <digest algorithm="md5">ac2e02728ce0052968963edb5bfe78e5</digest>
+        <digest algorithm="sha1">f4423f393606da2e343b3092309265dc1a1507ba</digest>
+        <digest algorithm="sha256">b80e477019914d706ef0ce6c2056708fc03c3f0cb95c6715a2a714932fc13066</digest>
+        <digest algorithm="sha384">fa9f71f4b37acadb1484fe62655f24418867a66244988373aa1c8c10bd9888cbba72542a4fd5e7b0ae34e1eff10ef58a</digest>
+        <digest algorithm="sha512">b48aeb7da7aee4cffc6a2e503a746e8c84903c3e891d6cee421f959968da90d120b41a8da21435d8403a8d7bef2196a85f91d40a3cfa3024c1e47764d46b1a2f</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>8341</size>
+        <blksize>32768</blksize>
+        <blocks>24</blocks>
+        <modtime>2021-01-26 19:43:54+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:33+00</acctime>
+        <sumtime>2025-02-07 21:30:39+00</sumtime>
+        <inode>7602509</inode>
+      </file>
+      <file>
+        <path>data/1-data/189920180101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2018_Dec2019_v2.csv</path>
+        <digest algorithm="md5">e7767935a799a7b353d63d5f2a21a644</digest>
+        <digest algorithm="sha1">0050112e977defbb3019bf8090fed2923740c148</digest>
+        <digest algorithm="sha256">0491a841f9310a3e64d21253ec8d3eaaf12ebe4cdbdfe1709d3795cdf443154b</digest>
+        <digest algorithm="sha384">79f2124be1b071d3be265596fd3bf4fd27146236b4947f7221216dc8ea2820cdf2affab6b66d3894da3ac2c26d8e88dd</digest>
+        <digest algorithm="sha512">65015260ccc080f91251ac6d439c94e7712a3ca2398d7212f2f0479386d5200af91aa809949014f652efb5802eb39609ecfc01ec5dc26b37edcf3fc8e88a6983</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>8343</size>
+        <blksize>32768</blksize>
+        <blocks>24</blocks>
+        <modtime>2021-01-26 19:43:54+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:33+00</acctime>
+        <sumtime>2025-02-07 21:30:39+00</sumtime>
+        <inode>7602510</inode>
+      </file>
+      <file>
+        <path>data/1-data/189920200101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2020_Dec2020_v1.csv</path>
+        <digest algorithm="md5">1cc3c19d17f9378fc0e06c97a1bbde51</digest>
+        <digest algorithm="sha1">c3bf2a6fd7e4f8364b660615a4c17df8d211d0c6</digest>
+        <digest algorithm="sha256">d82d38cee9b9ce01c22468e0eec96adccb47386dbc711a41dde261dc5513aa34</digest>
+        <digest algorithm="sha384">6b8d7dbb10a09680933b41e2e91303df15ece1db909e129c375fc792ce8437bc000bf541c335888ed12e9fc8b2a1ccc9</digest>
+        <digest algorithm="sha512">2a0efbde6ce409970ca77a011c0669e1e866f1c5707c16623f3ffcf6de8e9663f9bec6a71f9432b74a0b2034feb42829686a43ce717002a7e49605b83d3a1928</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>6</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>8062</size>
+        <blksize>32768</blksize>
+        <blocks>16</blocks>
+        <modtime>2021-01-26 19:44:06+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:33+00</acctime>
+        <sumtime>2025-02-07 21:30:39+00</sumtime>
+        <inode>7602511</inode>
+      </file>
+      <file>
+        <path>data/1-data/189920220101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2022_Dec2022_v1.csv</path>
+        <digest algorithm="md5">fe5547a4be4bdb4f1eeb81a958540547</digest>
+        <digest algorithm="sha1">0b225f798c52a5790c5b877f712f8cc2ada3add5</digest>
+        <digest algorithm="sha256">931ba0589280fb8c29d9970692ed17a9fe338708a107cbc56763f06583b73a75</digest>
+        <digest algorithm="sha384">acc7ffef604dc1fd16029fc22f5fcf63b60f1a1013ead0a0d2dfbc039b8e608f108693dbd8055917ef1768117db23df7</digest>
+        <digest algorithm="sha512">04be7955c919ccdbcf520578818d3d05b7121f9fde35d4348e4ad0a47d04a20d248975e2d9a2053f2c9d1b53f9f65202bcd28ed0c31d697e09fbe932a2bc41fb</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>3</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>7840</size>
+        <blksize>32768</blksize>
+        <blocks>16</blocks>
+        <modtime>2023-01-25 17:52:26+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:33+00</acctime>
+        <sumtime>2025-02-07 21:30:39+00</sumtime>
+        <inode>8126476</inode>
+      </file>
+      <file>
+        <path>data/1-data/189920230101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2023_Dec2023_v1.csv</path>
+        <digest algorithm="md5">db46f56bfb045c3963245297b7b3a307</digest>
+        <digest algorithm="sha1">f5d46f8ae71aab2458f8141e72b9cf9191317d4a</digest>
+        <digest algorithm="sha256">5f9f75e86892d24af1d92e6b4c45203c9703b284c68dadde12baf98fb6b71639</digest>
+        <digest algorithm="sha384">a0b11c79eaec673bda3ebd4cb1a28ed5a40c189682841a5bb76959a300b9f6f183dc47a175db6f0d6e0ac8ebce04ed9e</digest>
+        <digest algorithm="sha512">ca80bafb587f7dedceaf27433aad45f7ab31f92035422195354ff95c769b213d2731513b2ef588cca1e4234ffebaa0de8b6a19436d9c3dfb0a7fdf55b5a07dd1</digest>
+        <type_category>regular</type_category>
+        <type>text</type>
+        <permissions>-rw-r--r--</permissions>
+        <linkcount>2</linkcount>
+        <user>root</user>
+        <group>root</group>
+        <size>7847</size>
+        <blksize>32768</blksize>
+        <blocks>16</blocks>
+        <modtime>2024-01-04 19:17:25+00</modtime>
+        <changetime>2025-02-07 21:29:24+00</changetime>
+        <acctime>2025-02-07 21:29:33+00</acctime>
+        <sumtime>2025-02-07 21:30:39+00</sumtime>
+        <inode>6293092</inode>
+      </file>
+    </files>
+  </body>
+</accession>

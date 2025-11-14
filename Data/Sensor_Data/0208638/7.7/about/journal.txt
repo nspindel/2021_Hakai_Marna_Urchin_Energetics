@@ -1,0 +1,357 @@
+*****************************************************************
+Journal for accession number: 0208638
+Created on:                    2025-01-31 12:11:51 UTC
+By:                            Alex Kozyr, National Centers for Environmental Information
+
+Source: Wiley Evans (Hakai Institute, Canada) submitted these data to OCADS via SOCAT.
+
+Action(s): The original data and metadata files were sent to OCADS as ZIP file
+of the data and metadata via SOCAT. All original data and metadata files were 
+transferred to the directory of data/0-data/. NCEI personnel extracted 
+the longitude and latitude data, and plotted a sampling station map. Both the 
+generated longitude latitude file and the sampling station map were saved in the 
+about/ directory. 
+
+Version:                       7.7
+Updates received on:           2025-01-13
+
+Files:
+
+about/
+This directory contains files created by NCEI staff, email correspondence,
+and other 'negotiable' information between NCEI staff and the data provider.
+
+0208638_lonlat.txt - 
+  Contains station locations for these data.  Each row contains the
+  geographical position where these data were collected (longitude in the
+  left column and latitude in the right column, both in decimal degrees).
+  NCEI may have corrected or omitted geographic positions that seemed to be
+  in error when generating this file.  However, NCEI did not change the
+  original data files under the directory data/0-data/.
+  
+0208638_map.jpg - 
+  Station location map for the data.
+
+6-email.txt - 
+  E-mail from SOCAT with attached data and documentation.
+
+data/0-data/
+This directory contains the data files as submitted to NCEI.
+
+data/1-data
+This directory contains the data files converted to CSV format by NCEI.
+
+Additional files:
+189920240101_Hakai_OAP_metadata_QuadraBoL_Jan2024_Dec2024_v1.pdf189920240101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2024_Dec2024_v1.xls189920240101.csvdata_dictionary.txt
+
+*****************************************************************
+Journal for accession number: 0208638
+Created on:                    2024-01-04 12:11:51 UTC
+By:                            Alex Kozyr, National Centers for Environmental Information
+
+Source: Wiley Evans (Hakai Institute, Canada) submitted these data to OCADS via SOCAT.
+
+Action(s): The original data and metadata files were sent to OCADS as ZIP file
+of the data and metadata via SOCAT. All original data and metadata files were 
+transferred to the directory of data/0-data/. NCEI personnel extracted 
+the longitude and latitude data, and plotted a sampling station map. Both the 
+generated longitude latitude file and the sampling station map were saved in the 
+about/ directory. 
+
+Version:                       6.6
+Updates received on:           2023-12-20
+
+Files:
+
+about/
+This directory contains files created by NCEI staff, email correspondence,
+and other 'negotiable' information between NCEI staff and the data provider.
+
+0208638_lonlat.txt - 
+  Contains station locations for these data.  Each row contains the
+  geographical position where these data were collected (longitude in the
+  left column and latitude in the right column, both in decimal degrees).
+  NCEI may have corrected or omitted geographic positions that seemed to be
+  in error when generating this file.  However, NCEI did not change the
+  original data files under the directory data/0-data/.
+  
+0208638_map.jpg - 
+  Station location map for the data.
+
+5-email.txt - 
+  E-mail from SOCAT with attached data and documentation.
+
+data/0-data/
+This directory contains the data files as submitted to NCEI.
+
+data/1-data
+This directory contains the data files converted to CSV format by NCEI.
+
+Additional files:
+
+189920230101_Hakai_OAP_metadata_QuadraBoL_Jan2023_Dec2023_v1.docx
+189920230101_Hakai_OAP_metadata_QuadraBoL_Jan2023_Dec2023_v1.pdf
+189920230101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2023_Dec2023_v1.xls
+189920230101.csv
+data_dictionary.txt
+
+*****************************************************************
+Journal for accession number: 0208638
+Created on:                    2023-01-25 12:11:51 UTC
+By:                            Alex Kozyr, National Centers for Environmental Information
+
+Source: Wiley Evans (Hakai Institute, Canada) submitted these data to OCADS via SOCAT.
+
+Action(s): The original data and metadata files were sent to OCADS as ZIP file
+of the data and metadata via SOCAT. All original data and metadata files were 
+transferred to the directory of data/0-data/. NCEI personnel extracted 
+the longitude and latitude data, and plotted a sampling station map. Both the 
+generated longitude latitude file and the sampling station map were saved in the 
+about/ directory. 
+
+Version:                       5.5
+Updates received on:           2023-01-14
+
+Files:
+
+about/
+This directory contains files created by NCEI staff, email correspondence,
+and other 'negotiable' information between NCEI staff and the data provider.
+
+0208638_lonlat.txt - 
+  Contains station locations for these data.  Each row contains the
+  geographical position where these data were collected (longitude in the
+  left column and latitude in the right column, both in decimal degrees).
+  NCEI may have corrected or omitted geographic positions that seemed to be
+  in error when generating this file.  However, NCEI did not change the
+  original data files under the directory data/0-data/.
+  
+0208638_map.jpg - 
+  Station location map for the data.
+
+4-email.txt - 
+  E-mail from SOCAT with attached data and documentation.
+
+data/0-data/
+This directory contains the data files as submitted to NCEI.
+
+data/1-data
+This directory contains the data files converted to CSV format by NCEI.
+
+Additional files:
+
+189920220101_Hakai_OAP_metadata_QuadraBoL_Jan2022_Dec2022_v1.pdf189920220101_QuadraBoL_Jan2022_Dec2022.csv189920220101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2022_Dec2022_v1.xls
+
+*****************************************************************
+Journal for accession number: 0208638
+Created on:                    2022-01-12 14:11:51 UTC
+By:                            Alex Kozyr, National Centers for Environmental Information
+
+Source: Wiley Evans (Hakai Institute, Canada) submitted these data to SOCAT and OCADS
+on December 21, 2021.
+
+Action(s): The original data and metadata files were sent to OCADS as ZIP file
+of the data and metadata via SOCAT. All original data and metadata files were 
+transferred to the directory of data/0-data/. NCEI personnel extracted 
+the longitude and latitude data, and plotted a sampling station map. Both the 
+generated longitude latitude file and the sampling station map were saved in the 
+about/ directory. 
+
+Version:                       4.4
+Updates received on:           2021-12-21
+
+Files:
+
+about/
+This directory contains files created by NCEI staff, email correspondence,
+and other 'negotiable' information between NCEI staff and the data provider.
+
+0208638_lonlat.txt - 
+  Contains station locations for these data.  Each row contains the
+  geographical position where these data were collected (longitude in the
+  left column and latitude in the right column, both in decimal degrees).
+  NCEI may have corrected or omitted geographic positions that seemed to be
+  in error when generating this file.  However, NCEI did not change the
+  original data files under the directory data/0-data/.
+  
+0208638_map.jpg - 
+  Station location map for the data.
+
+3-email.txt - 
+  E-mail from SOCAT with attached data and documentation.
+
+data/0-data/
+This directory contains the data files as submitted to NCEI.
+
+data/1-data
+This directory contains the data files converted to CSV format by NCEI.
+
+Additional files:
+
+189920210101_Hakai_OAP_metadata_QuadraBoL_Jan2021_Dec2021_v1.pdf189920210101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2021_Dec2021_v1.xls189920210101.csv
+
+*****************************************************************
+Journal for accession number: 0208638
+Created on:                    2021-05-04 14:30:51 UTC
+By:                            Alex Kozyr, National Centers for Environmental Information
+
+Source: Wiley Evans (Hakai Institute, Canada) submitted these data to SOCAT and OCADS
+on April 30, 2021.
+
+Action(s): The original data and metadata files were sent to OCADS as ZIP file
+of the data and metadata via SOCAT. All original data and metadata files were 
+transferred to the directory of data/0-data/. NCEI personnel extracted 
+the longitude and latitude data, and plotted a sampling station map. Both the 
+generated longitude latitude file and the sampling station map were saved in the 
+about/ directory. 
+
+Version:                       3.3
+Updates received on:           2021-04-30
+
+Files:
+
+about/
+This directory contains files created by NCEI staff, email correspondence,
+and other 'negotiable' information between NCEI staff and the data provider.
+
+0208638_lonlat.txt - 
+  Contains station locations for these data.  Each row contains the
+  geographical position where these data were collected (longitude in the
+  left column and latitude in the right column, both in decimal degrees).
+  NCEI may have corrected or omitted geographic positions that seemed to be
+  in error when generating this file.  However, NCEI did not change the
+  original data files under the directory data/0-data/.
+  
+
+0208638_map.jpg - 
+  Station location map for the data.
+
+2-email.txt - 
+  E-mail from SOCAT with attached data and documentation.
+
+data/0-data/
+This directory contains the data files as submitted to NCEI.
+
+*.cav - original data files in CSV format sent by data providers to OCADS, 
+these data files were transferred to /0-data directory. 
+
+*.xls - original metadata report in xls format sent to OCADS by data providers.
+
+*.pdf - original metadata report in pdf format sent to OCADS by data providers.
+
+data/1-data
+This directory contains the data files converted to CSV format by NCEI.
+
+*.csv - Comma-separated-value (CSV) metadata report converted from xls format by NCEI
+
+Replacement and additional files:
+
+189920141219_QuadraSUPERCO2_Dec2014_Apr2016_v2_Metadata.docx189920141219_QuadraSUPERCO2_Dec2014_Apr2016_v2.csv189920141219_SOCAT_metadata_underway_HakaiInstitute_QIFS_SUPERCO2_Dec2014_Apr2016_v2.xls
+
+*****************************************************************
+Journal for accession number: 0208638
+Created on:                    2021-01-26 14:30:51 UTC
+By:                            Alex Kozyr, National Centers for Environmental Information
+
+Source: Wiley Evans (Hakai Institute, Canada) submitted these data to SOCAT and OCADS
+on January 19, 2021.
+
+Action(s): The original data and metadata files were sent to OCADS as ZIP file
+of the data and metadata via SOCAT. All original data and metadata files were 
+transferred to the directory of data/0-data/. NCEI personnel extracted 
+the longitude and latitude data, and plotted a sampling station map. Both the 
+generated longitude latitude file and the sampling station map were saved in the 
+about/ directory. 
+
+Version:                       2.2
+Updates received on:           2021-01-19
+
+Files:
+
+about/
+This directory contains files created by NCEI staff, email correspondence,
+and other 'negotiable' information between NCEI staff and the data provider.
+
+0208638_lonlat.txt - 
+  Contains station locations for these data.  Each row contains the
+  geographical position where these data were collected (longitude in the
+  left column and latitude in the right column, both in decimal degrees).
+  NCEI may have corrected or omitted geographic positions that seemed to be
+  in error when generating this file.  However, NCEI did not change the
+  original data files under the directory data/0-data/.
+  
+
+0208638_map.jpg - 
+  Station location map for the data.
+
+1-email.txt - 
+  E-mail from SOCAT with attached data and documentation.
+
+data/0-data/
+This directory contains the data files as submitted to NCEI.
+
+*.cav - original data files in CSV format sent by data providers to OCADS, 
+these data files were transferred to /0-data directory. 
+
+*.xls - original metadata report in xls format sent to OCADS by data providers.
+
+*.pdf - original metadata report in pdf format sent to OCADS by data providers.
+
+data/1-data
+This directory contains the data files converted to CSV format by NCEI.
+
+*.csv - Comma-separated-value (CSV) metadata report converted from xls format by NCEI
+
+Replacement and additional files:
+189920141219_QuadraSUPERCO2_Dec2014_Apr2016_metadata.docx189920141219_QuadraSUPERCO2_Dec2014_Apr2016.csv189920141219_SOCAT_metadata_underway_HakaiInstitute_QIFS_SUPERCO2_Dec2014_Apr2016_v2.xls189920160407_QuadraBoL_Apr2016_Dec2017_metadata.docx189920160407_QuadraBoL_Apr2016_Dec2017.csv189920160407_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Apr2016_Dec2017_v2.xls189920180101_QuadraBoL_Jan2018_Dec2019_metadata.docx189920180101_QuadraBoL_Jan2018_Dec2019.csv189920180101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2018_Dec2019_v2.xls189920200101_QuadraBoL_Jan2020_Dec2020_metadata.docx189920200101_QuadraBoL_Jan2020_Dec2020.csv189920200101_SOCAT_metadata_underway_HakaiInstitute_QIFS_BoL_Jan2020_Dec2020_v1.xls
+
+*****************************************************************
+Journal for accession number: 0208638
+Created on:                    2020-01-23 21:52:51 UTC
+By:                            Alex Kozyr, National Centers for Environmental Information
+
+Source: Wiley Evans (Hakai Institute, Canada) submitted these data to SOCAT and OCADS
+on January 22, 2020.
+
+Action(s): The original data and metadata files were sent to OCADS as ZIP file
+of the data and metadata via SOCAT. All original data and metadata files were 
+transferred to the directory of data/0-data/. NCEI personnel extracted 
+the longitude and latitude data, and plotted a sampling station map. Both the 
+generated longitude latitude file and the sampling station map were saved in the 
+about/ directory. 
+
+Files:
+
+about/
+This directory contains files created by NCEI staff, email correspondence,
+and other 'negotiable' information between NCEI staff and the data provider.
+
+0208638_lonlat.txt - 
+  Contains station locations for these data.  Each row contains the
+  geographical position where these data were collected (longitude in the
+  left column and latitude in the right column, both in decimal degrees).
+  NCEI may have corrected or omitted geographic positions that seemed to be
+  in error when generating this file.  However, NCEI did not change the
+  original data files under the directory data/0-data/.
+  
+
+0208638_map.jpg - 
+  Station location map for the data.
+
+0-email.txt - 
+  E-mail from SOCAT with attached data and documentation.
+
+data/0-data/
+This directory contains the data files as submitted to NCEI.
+
+*.cav - original data files in CSV format sent by data providers to OCADS, 
+these data files were transferred to /0-data directory. 
+
+*.xls - original metadata report in xls format sent to OCADS by data providers.
+
+*.pdf - original metadata report in pdf format sent to OCADS by data providers.
+
+data/1-data
+This directory contains the data files converted to CSV format by NCEI.
+
+*.csv - Comma-separated-value (CSV) metadata report converted from xls format by NCEI

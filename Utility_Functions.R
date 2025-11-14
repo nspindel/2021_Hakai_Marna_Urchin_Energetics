@@ -39,3 +39,37 @@ priors_for <- function(formula) {
     priors_common
   }
 }
+
+# Flexible path management
+load_site_files <- function(region = "Newport_OR") {
+  data_path <- file.path(here("Data"), region)
+  all_files <- list.files(path = data_path, pattern = "\\.csv$", full.names = TRUE)
+  message("Loading ", length(all_files), " files from: ", data_path)
+  return(all_files)
+}
+
+load_ocean_file <- function(file_path, site_prefix_regex = ".*-(H[12])_") {
+  df <- read_csv(file_path, show_col_types = FALSE) %>%
+    clean_names()
+  
+  # Rename first three columns by position
+  names(df)[1:3] <- c("datetime", "depth_ft", "value")
+  
+  df <- df %>%
+    mutate(
+      datetime = ymd_hms(datetime, quiet = TRUE),
+      value = as.numeric(value),
+      variable = basename(file_path) %>%
+        str_remove(site_prefix_regex) %>%
+        str_remove("\\.csv$") %>%
+        recode(!!!canonical_var_names)
+    ) %>%
+    drop_na(datetime, value)
+  
+  return(df)
+}
+
+
+f_to_c <- function(temp_f) {
+  (temp_f - 32) * 5 / 9
+}

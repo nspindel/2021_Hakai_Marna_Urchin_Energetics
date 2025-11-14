@@ -1,0 +1,21 @@
+From: <oar.pmel.socat.support@noaa.gov>
+Date: Mon, Jan 13, 2025 at 4:12 PM
+Subject: Request for OCADS archival of dataset 189920240101 (Quadra Island Field Station) from SOCAT dashboard user Wiley Evans
+To: <oar.pmel.socat.support@noaa.gov>
+Cc: <wiley.evans@hakai.org>, <noaa.ocads@noaa.gov>
+
+
+Dear OCADS Archival Team,
+
+As part of submitting dataset 189920240101 (Quadra Island Field Station) to SOCAT for QC,
+the SOCAT Upload Dashboard user Wiley Evans
+has requested immediate archival of the dataset data and metadata.
+
+The dataset BagIt package has been posted to NCEI for pickup and archival.
+
+Best regards,
+SOCAT Team 
+
+Attachments:
+
+189920240101_QuadraIslandFieldStation_bagit.zip

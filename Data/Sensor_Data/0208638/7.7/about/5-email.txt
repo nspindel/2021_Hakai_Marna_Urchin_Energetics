@@ -1,0 +1,23 @@
+From: <oar.pmel.socat.support@noaa.gov>
+Date: Thu, Dec 21, 2023 at 12:48 PM
+Subject: Request for OCADS archival of dataset 189920230101 (Quadra Island Field Station) from SOCAT dashboard user Wiley Evans
+To: <nodc.dataofficer@noaa.gov>
+Cc: <wiley.evans@hakai.org>, <oar.pmel.socat.support@noaa.gov>, <noaa.ocads@noaa.gov>
+
+
+Dear OCADS Archival Team,
+
+As part of submitting dataset 189920230101 (Quadra Island Field Station) to SOCAT for QC,
+the SOCAT Upload Dashboard user Wiley Evans
+has requested immediate archival of the attached BagIt ZIP file of data and metadata.
+
+The metadata file OCADS.xml is an *experimental* OCADS metadata file generated
+from any OME metadata or metadata provided in the data file.  This file was machine-generated
+and added only to assist in the archival, but should *not* be archived.
+
+Best regards,
+SOCAT Team 
+
+Attachments:
+
+189920230101_QuadraIslandFieldStation_bagit.zip

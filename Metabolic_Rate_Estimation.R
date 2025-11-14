@@ -163,8 +163,6 @@ backend      <- "cmdstanr"
 seed         <- 123
 brms_fam     <- Gamma(link = "log")
 
-unlink("./Model_Output/metabolism_temp_oa_*", force = TRUE)
-
 # Priors ----
 priors_common <- c(
   prior(normal(0, 10), class = "b"),
@@ -772,7 +770,7 @@ fit_metabolism_rmr_dyn_wet_mass <- brm(
 )
 
 # Visualize conditional effects in El Nino and La Nina ----
-# fit_metabolism_rmr_dyn_wet_mass <- readRDS("./Model_Output/metabolism_dyn_wet_mass_full.rds")
+fit_metabolism_rmr_dyn_wet_mass <- readRDS("./Model_Output/metabolism_dyn_wet_mass_full.rds")
 ce_95_dyn_wet_mass <- conditional_effects(fit_metabolism_rmr_dyn_wet_mass, robust = F)
 ce_80_dyn_wet_mass <- conditional_effects(fit_metabolism_rmr_dyn_wet_mass, prob = 0.8, robust = F)
 
@@ -816,6 +814,62 @@ p_dyn_wet_mass_rmr <- ggplot() +
   #            aes(x = trial_day, y = absolute_rate_vo2_mg_o2_per_hour,
   #                shape = temp_label, fill = temp_label),
   #            size = 1) +
+  geom_segment(
+    aes(x = 35, xend = 23, 
+        y = 5.1, yend = 5.1),  # coordinates in plot space
+    arrow = arrow(length = unit(0.5, "cm")),
+    lineend = "round",
+    color = "black",
+    linewidth = 1.2
+  )  +
+  annotate("text", x = 31, y = 5.25, label = "20.76 °C", size = 4) +
+  geom_segment(
+    aes(x = 57, xend = 45, 
+        y = 2, yend = 2),  # coordinates in plot space
+    arrow = arrow(length = unit(0.5, "cm")),
+    lineend = "round",
+    color = "black",
+    linewidth = 1.2
+  )  +
+  annotate("text", x = 53, y = 2.15, label = "20.12 °C", size = 4) +
+  geom_segment(
+    aes(x = 56, xend = 68, 
+        y = 1.1, yend = 1.1),  # coordinates in plot space
+    arrow = arrow(length = unit(0.5, "cm")),
+    lineend = "round",
+    color = "black",
+    linewidth = 1.2
+  )  +
+  annotate("text", x = 60, y = 1.25, label = "18.70 °C", size = 4) +
+  
+  geom_segment(
+    aes(x = 35, xend = 23, 
+        y = 2.8, yend = 2.8),  # coordinates in plot space
+    arrow = arrow(length = unit(0.5, "cm")),
+    lineend = "round",
+    color = "ivory4",
+    linewidth = 1.2
+  )  +
+  annotate("text", x = 31, y = 2.95, label = "18.06 °C", size = 4, color = "ivory4") +
+  geom_segment(
+    aes(x = 57, xend = 45, 
+        y = 2.4, yend = 2.4),  # coordinates in plot space
+    arrow = arrow(length = unit(0.5, "cm")),
+    lineend = "round",
+    color = "ivory4",
+    linewidth = 1.2
+  )  +
+  annotate("text", x = 53, y = 2.55, label = "17.33 °C", size = 4, color = "ivory4") +
+  geom_segment(
+    aes(x = 56, xend = 68, 
+        y = 1.5, yend = 1.5),  # coordinates in plot space
+    arrow = arrow(length = unit(0.5, "cm")),
+    lineend = "round",
+    color = "ivory4",
+    linewidth = 1.2
+  )  +
+  annotate("text", x = 60, y = 1.65, label = "15.22 °C", size = 4, color = "ivory4") +
+  
   scale_color_manual(values = c(
     "ivory4", # La Nina 18-14
     "black" # El Nino 21-18
@@ -847,7 +901,7 @@ p_dyn_wet_mass_rmr <- ggplot() +
   ) +
   gg_options() +
   theme(
-    legend.position = c(0.6,0.6)
+    legend.position = c(0.65,0.7)
   )
 
 p_dyn_wet_mass_rmr
