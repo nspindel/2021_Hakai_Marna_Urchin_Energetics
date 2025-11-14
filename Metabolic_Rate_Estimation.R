@@ -17,14 +17,17 @@ libs <- c(
   "posterior",
   "tidybayes",
   "emmeans",
+  "glmmTMB",
+  "DHARMa",
   "ggrepel",
-  "scales"
-  )
+  "scales",
+  "Hmisc",
+  "readxl"
+)
 
 lapply(libs, require, character.only = TRUE)
 
 source("Utility_Functions.R")
-
 # Load & wrangle data: ---------------------------------------------------------
 data_metabolism <- read.csv("./Data/Respirometry.csv") %>%
   mutate(
@@ -155,7 +158,7 @@ chains       <- 4
 iterations   <- 18000
 warmup       <- 2000
 control_list <- list(max_treedepth = 15, adapt_delta = 0.95)
-file_refit   <- "always"
+file_refit   <- "on_change"
 backend      <- "cmdstanr"
 seed         <- 123
 brms_fam     <- Gamma(link = "log")
@@ -286,6 +289,7 @@ fit_metabolism_dynamic_temp_afdm_rmr_full <- brm(
   seed = seed,
   file = "./Model_Output/metabolism_dynamic_temp_afdm_rmr_full"
 )
+
 # Model selection based on LOO stacking weights ----
 fit_all <- lapply(fit_all, add_criterion, criterion = "loo", reloo = FALSE)
 loos    <- lapply(fit_all, \(x) x$criteria$loo)
@@ -295,7 +299,6 @@ sapply(loos, function(x) attr(x, "dims")[1])
 # 64000     64000     64000     64000     64000
 
 # Stacking and pseudo-BMA (Bayesian bootstrap) weights
-# w_stack <- loo::model_weights(loos, method = "stacking")
 w_stack <- brms::loo_model_weights(loos, method = "stacking")
 w_stack
 # Method: stacking
@@ -897,6 +900,7 @@ fit_metabolism_dynamic_const_temp_afdm_rmr_full <- brm(
 )
 
 # Post hoc pairwise comparisons (constant & El Nino/La Nina) by temperature ----
+fit_metabolism_dynamic_const_temp_afdm_rmr_full <- readRDS("./Model_Output/metabolism_dynamic_const_temp_afdm_rmr_full.rds")
 ems <- emmeans(fit_metabolism_dynamic_const_temp_afdm_rmr_full, ~ temp_deg_c + log(afdm_g))
 
 cont_temp <- contrast(ems, "pairwise", ratios = TRUE, type = "response")
