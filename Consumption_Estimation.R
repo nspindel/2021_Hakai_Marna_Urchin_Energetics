@@ -5,7 +5,7 @@
 # Estimation of consumption rate.                                             #
 #                                                                             #
 # Author: Nathan B. Spindel                                                   #
-###############################################################################
+##############################################################################
 # Load CRAN libraries and utility functions  ----------------------------------
 libs <- c(
   "tidyverse", 
@@ -17,8 +17,12 @@ libs <- c(
   "posterior",
   "tidybayes",
   "emmeans",
+  "glmmTMB",
+  "DHARMa",
   "ggrepel",
-  "scales"
+  "scales",
+  "Hmisc",
+  "readxl"
 )
 
 lapply(libs, require, character.only = TRUE)
@@ -121,13 +125,13 @@ priors_shape_distr <- c(
 # Candidate model formulae for constant temperatures ----
 # Full GP (distributional Gamma)
 form_full_distr <- brms::bf(
-  per_cap_feed_per_day ~ gp(temp_deg_c, k = 10, c = 5/4, by = pco2_uatm) + (1 | tank_id),
-  shape ~ 1 + pco2_uatm + temp_deg_c
+  per_cap_feed_per_day ~ gp(temp_deg_c, k = 6, c = 5/4, by = pco2_uatm) + (1 | tank_id)
+  # shape ~ 1 + pco2_uatm + temp_deg_c
 )
 
 # Reduced GP (single surface, no by)
 form_gp_noby <- brms::bf(
-  per_cap_feed_per_day ~ gp(temp_deg_c, k = 10, c = 5/4) + (1 | tank_id)
+  per_cap_feed_per_day ~ gp(temp_deg_c, k = 6, c = 5/4) + (1 | tank_id)
 )
 
 # Linear interaction
@@ -299,16 +303,16 @@ sapply(pk, \(v) table(cut(v,
                           labels = c("good (≤0.5)", "ok (≤0.7)", "bad (≤1)", "very bad (>1)")
 )))
 # full_distr gp_noby lin_int lin_add null_mod
-# good (≤0.5)          191     189     189     189      189
-# ok (≤0.7)              0       2       2       0        0
-# bad (≤1)               1       1       1       3        3
+# good (≤0.5)          191     188     189     189      189
+# ok (≤0.7)              0       1       2       0        0
+# bad (≤1)               1       3       1       3        3
 # very bad (>1)          0       0       0       0        0
 
 selected_model <- fit_all$full
 
 bayes_R2(selected_model)
 # Estimate  Est.Error      Q2.5     Q97.5
-# R2 0.4520927 0.07946571 0.2861106 0.5872066
+# R2 0.4544242 0.07923617 0.2889653 0.5879063
 
 # Posterior predictive check for favored model
 pp_check(selected_model, ndraws = 50)
