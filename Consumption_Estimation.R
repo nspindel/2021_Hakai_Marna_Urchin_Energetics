@@ -88,7 +88,7 @@ backend      <- "cmdstanr"
 seed         <- 123
 brms_fam     <- Gamma(link = "log")
 
-unlink("./Model_Output/consumption_temp_oa_*", force = TRUE)
+# unlink("./Model_Output/consumption_temp_oa_*", force = TRUE)
 
 
 # Priors ----
@@ -493,9 +493,9 @@ ggsave("./Figures/Per_Cap_Consumption.jpg", p_agg_feed,
        units = "in", width = 8, height = 8)
 
 # Pairwise comparisons --------------------------------------------------------
+selected_model <- readRDS("./Model_Output/consumption_temp_oa_full_distr.rds")
 selected_model$formula
 # per_cap_feed_per_day ~ gp(temp_deg_c, k = 10, c = 5/4, by = pco2_uatm) + (1 | tank_id) 
-# shape ~ 1 + pco2_uatm + temp_deg_c
 
 ems <- emmeans(selected_model, ~ pco2_uatm | temp_deg_c,
                at = list(temp_deg_c = c(10,13,16,17,18,20)))
@@ -509,39 +509,43 @@ emmeans::hpd.summary(cont_pco2,
                      type = "response")
 # pco2_uatm = 600:
 #   contrast                    ratio lower.HPD upper.HPD
-# temp_deg_c13 / temp_deg_c10 1.226     0.721      2.06
-# temp_deg_c16 / temp_deg_c10 1.402     0.737      2.53
-# temp_deg_c16 / temp_deg_c13 1.135     0.830      1.52
-# temp_deg_c17 / temp_deg_c10 1.423     0.760      2.52
-# temp_deg_c17 / temp_deg_c13 1.158     0.828      1.60
-# temp_deg_c17 / temp_deg_c16 1.019     0.889      1.14
-# temp_deg_c18 / temp_deg_c10 1.437     0.779      2.53
-# temp_deg_c18 / temp_deg_c13 1.172     0.811      1.64
-# temp_deg_c18 / temp_deg_c16 1.033     0.809      1.24
-# temp_deg_c18 / temp_deg_c17 1.012     0.898      1.12
-# temp_deg_c20 / temp_deg_c10 1.493     0.793      2.67
-# temp_deg_c20 / temp_deg_c13 1.215     0.826      1.72
-# temp_deg_c20 / temp_deg_c16 1.072     0.799      1.37
-# temp_deg_c20 / temp_deg_c17 1.052     0.830      1.31
-# temp_deg_c20 / temp_deg_c18 1.039     0.851      1.26
+# temp_deg_c13 / temp_deg_c10 1.810     1.063      2.67
+# temp_deg_c16 / temp_deg_c10 2.318     1.339      3.41
+# temp_deg_c16 / temp_deg_c13 1.295     0.925      1.67
+# temp_deg_c17 / temp_deg_c10 2.275     1.380      3.22
+# temp_deg_c17 / temp_deg_c13 1.284     0.849      1.74
+# temp_deg_c17 / temp_deg_c16 0.989     0.849      1.12
+# temp_deg_c18 / temp_deg_c10 2.256     1.395      3.18
+# temp_deg_c18 / temp_deg_c13 1.279     0.800      1.79
+# temp_deg_c18 / temp_deg_c16 0.987     0.735      1.22
+# temp_deg_c18 / temp_deg_c17 0.995     0.872      1.12
+# temp_deg_c20 / temp_deg_c10 2.409     1.335      3.60
+# temp_deg_c20 / temp_deg_c13 1.357     0.833      1.93
+# temp_deg_c20 / temp_deg_c16 1.056     0.681      1.48
+# temp_deg_c20 / temp_deg_c17 1.068     0.715      1.46
+# temp_deg_c20 / temp_deg_c18 1.071     0.786      1.42
 # 
 # pco2_uatm = 1200:
 #   contrast                    ratio lower.HPD upper.HPD
-# temp_deg_c13 / temp_deg_c10 1.413     0.912      2.09
-# temp_deg_c16 / temp_deg_c10 1.596     0.957      2.35
-# temp_deg_c16 / temp_deg_c13 1.135     0.856      1.43
-# temp_deg_c17 / temp_deg_c10 1.605     0.958      2.33
-# temp_deg_c17 / temp_deg_c13 1.144     0.849      1.46
-# temp_deg_c17 / temp_deg_c16 1.008     0.894      1.14
-# temp_deg_c18 / temp_deg_c10 1.580     0.943      2.31
-# temp_deg_c18 / temp_deg_c13 1.126     0.826      1.46
-# temp_deg_c18 / temp_deg_c16 0.995     0.807      1.21
-# temp_deg_c18 / temp_deg_c17 0.985     0.884      1.10
-# temp_deg_c20 / temp_deg_c10 1.373     0.876      2.00
-# temp_deg_c20 / temp_deg_c13 0.984     0.691      1.29
-# temp_deg_c20 / temp_deg_c16 0.871     0.660      1.10
-# temp_deg_c20 / temp_deg_c17 0.864     0.674      1.06
-# temp_deg_c20 / temp_deg_c18 0.877     0.699      1.04
+# temp_deg_c13 / temp_deg_c10 1.479     0.967      2.12
+# temp_deg_c16 / temp_deg_c10 1.753     0.990      2.51
+# temp_deg_c16 / temp_deg_c13 1.189     0.896      1.49
+# temp_deg_c17 / temp_deg_c10 1.720     0.991      2.40
+# temp_deg_c17 / temp_deg_c13 1.174     0.828      1.54
+# temp_deg_c17 / temp_deg_c16 0.986     0.872      1.09
+# temp_deg_c18 / temp_deg_c10 1.653     0.987      2.29
+# temp_deg_c18 / temp_deg_c13 1.134     0.767      1.52
+# temp_deg_c18 / temp_deg_c16 0.953     0.762      1.15
+# temp_deg_c18 / temp_deg_c17 0.964     0.860      1.06
+# temp_deg_c20 / temp_deg_c10 1.486     0.929      2.15
+# temp_deg_c20 / temp_deg_c13 1.021     0.652      1.42
+# temp_deg_c20 / temp_deg_c16 0.864     0.563      1.17
+# temp_deg_c20 / temp_deg_c17 0.875     0.606      1.15
+# temp_deg_c20 / temp_deg_c18 0.904     0.679      1.13
+# 
+# Point estimate displayed: mean 
+# Results are back-transformed from the log scale 
+# HPD interval probability: 0.95 
 # 
 # Point estimate displayed: mean 
 # Results are back-transformed from the log scale 
@@ -555,36 +559,36 @@ emmeans::hpd.summary(cont_temp,
                      type = "response")
 # temp_deg_c = 10:
 #   contrast                     ratio lower.HPD upper.HPD
-# pco2_uatm1200 / pco2_uatm600  1.47     0.613      2.74
+# pco2_uatm1200 / pco2_uatm600  2.14     1.160      3.26
 # 
 # temp_deg_c = 13:
 #   contrast                     ratio lower.HPD upper.HPD
-# pco2_uatm1200 / pco2_uatm600  1.63     1.033      2.33
+# pco2_uatm1200 / pco2_uatm600  1.74     1.099      2.43
 # 
 # temp_deg_c = 16:
 #   contrast                     ratio lower.HPD upper.HPD
-# pco2_uatm1200 / pco2_uatm600  1.61     1.205      2.02
+# pco2_uatm1200 / pco2_uatm600  1.59     1.107      2.09
 # 
 # temp_deg_c = 17:
 #   contrast                     ratio lower.HPD upper.HPD
-# pco2_uatm1200 / pco2_uatm600  1.59     1.264      1.93
+# pco2_uatm1200 / pco2_uatm600  1.58     1.165      2.04
 # 
 # temp_deg_c = 18:
 #   contrast                     ratio lower.HPD upper.HPD
-# pco2_uatm1200 / pco2_uatm600  1.55     1.220      1.89
+# pco2_uatm1200 / pco2_uatm600  1.53     1.113      1.99
 # 
 # temp_deg_c = 20:
 #   contrast                     ratio lower.HPD upper.HPD
-# pco2_uatm1200 / pco2_uatm600  1.31     0.984      1.66
+# pco2_uatm1200 / pco2_uatm600  1.31     0.831      1.86
 # 
 # Point estimate displayed: mean 
 # Results are back-transformed from the log scale 
 # HPD interval probability: 0.95 
-
 cont_posterior_temp <- gather_emmeans_draws(cont_temp) %>%
   mutate(
     temp_deg_c = as.factor(temp_deg_c)
   )
+cont_posterior_pco2 <- gather_emmeans_draws(cont_pco2) 
 
 ems_overall <- emmeans(selected_model, ~ pco2_uatm | temp_deg_c)
 
@@ -659,4 +663,108 @@ ggsave("./Figures/Supplemental/PWC_Consumption.jpg", plot_emm_fit,
 ggsave("./Figures/Supplemental/PWC_Consumption.pdf", plot_emm_fit,
        width = 6, height = 8, units = "in")
 ggsave("./Figures/Supplemental/PWC_Consumption.png", plot_emm_fit,
+       width = 6, height = 8, units = "in")
+
+fit_consumption_dynamic_temp <- readRDS("./Model_Output/consumption_temp_const_dynamic_full.rds")
+selected_model <- fit_consumption_dynamic_temp
+selected_model$formula
+# fce ~ log(init_diam_mm) + temp_deg_c + (1 | tank_id) 
+
+ems <- emmeans(selected_model, ~ temp_deg_c)
+
+cont <- contrast(ems, method = "revpairwise", by = NULL, 
+                 type = "response", ratios = TRUE)
+
+emmeans::hpd.summary(cont, 
+                     prob = 0.95, 
+                     point.est = mean)
+# contrast                          ratio lower.HPD upper.HPD
+# 13 / 10                           2.298     1.152      3.57
+# 16 / 10                           2.430     1.211      3.79
+# 16 / 13                           1.099     0.553      1.71
+# (18-14 La Niña) / 10              3.587     2.038      5.29
+# (18-14 La Niña) / 13              1.622     0.902      2.40
+# (18-14 La Niña) / 16              1.535     0.868      2.29
+# 17 / 10                           3.053     1.532      4.73
+# 17 / 13                           1.380     0.699      2.15
+# 17 / 16                           1.306     0.674      2.05
+# 17 / (18-14 La Niña)              0.867     0.487      1.29
+# 18 / 10                           2.443     1.243      3.80
+# 18 / 13                           1.105     0.561      1.72
+# 18 / 16                           1.046     0.524      1.62
+# 18 / (18-14 La Niña)              0.694     0.393      1.03
+# 18 / 17                           0.831     0.417      1.29
+# 20 / 10                           2.904     1.475      4.53
+# 20 / 13                           1.313     0.651      2.03
+# 20 / 16                           1.243     0.634      1.96
+# 20 / (18-14 La Niña)              0.825     0.462      1.22
+# 20 / 17                           0.988     0.513      1.55
+# 20 / 18                           1.234     0.607      1.91
+# (21-18 El Niño) / 10              3.315     1.869      4.91
+# (21-18 El Niño) / 13              1.498     0.844      2.21
+# (21-18 El Niño) / 16              1.419     0.799      2.12
+# (21-18 El Niño) / (18-14 La Niña) 0.941     0.609      1.32
+# (21-18 El Niño) / 17              1.127     0.650      1.68
+# (21-18 El Niño) / 18              1.408     0.778      2.08
+# (21-18 El Niño) / 20              1.186     0.666      1.76
+# 
+# Point estimate displayed: mean 
+# Results are back-transformed from the log scale 
+# HPD interval probability: 0.95
+cont_posterior <- gather_emmeans_draws(cont) 
+
+cont_posterior_filtered <- cont_posterior %>%
+  filter(
+    contrast %in% c(
+      "(18-14 La Niña) - 16",
+      "(21-18 El Niño) - 20"
+    )
+  ) %>%
+  mutate(
+    contrast_formatted = ifelse(contrast == "(18-14 La Niña) - 16",
+                                "La Niña vs 16°C", "El Niño vs 20°C")
+  )
+
+summary_emm_mhw <- cont_posterior_filtered %>%
+  group_by(contrast_formatted) %>%
+  mean_hdi(.value, .width = c(0.95)) %>%
+  mutate(
+    .value = round(.value, digits = 2),
+    .lower = round(.lower, digits = 2),
+    .upper = round(.upper, digits = 2)
+  ) %>%
+  mutate(
+    HDI = paste(.value, " (", .lower, ", ", .upper, ")", sep = "")
+  )
+
+plot_emm_fit_tpc_mhw <- ggplot(cont_posterior_filtered, 
+                               aes(x = .value, y = contrast_formatted)) +
+  geom_vline(xintercept = 0, linetype = 2, color = "black", size = 1, 
+             alpha = 0.7) +
+  stat_pointinterval(point_interval = "mean_hdi", .width = c(0.95, 0.80),
+                     interval_size_range = c(1,2), point_size = 4) +
+  geom_label_repel(data = summary_emm_mhw,
+                   aes(x = .value, label = HDI), 
+                   fill = "white", nudge_y = -0.4, nudge_x = 0.2) +
+  facet_grid(rows = vars(contrast_formatted), switch = "y") +
+  labs(
+    x = NULL,
+    y = NULL,
+    title = "Per Capita Consumption",
+    subtitle = "constant mean vs dynamic"
+  ) +
+  gg_options() +
+  scale_x_continuous(breaks = pretty_breaks(n = 6)) +
+  theme(
+    legend.position = "bottom",
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    panel.background = element_rect(fill = c("#DEDEDE"))
+  );plot_emm_fit_tpc_mhw
+
+ggsave("./Figures/Supplemental/PWC_Consumption_const_dynamic_temp.jpg", plot_emm_fit_tpc_mhw,
+       width = 6, height = 8, units = "in")
+ggsave("./Figures/Supplemental/PWC_Consumption_const_dynamic_temp.pdf", plot_emm_fit_tpc_mhw,
+       width = 6, height = 8, units = "in")
+ggsave("./Figures/Supplemental/PWC_Consumption_const_dynamic_temp.png", plot_emm_fit_tpc_mhw,
        width = 6, height = 8, units = "in")

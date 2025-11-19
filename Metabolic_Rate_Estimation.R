@@ -344,9 +344,12 @@ sink("./Model_Output/sessionInfo_RMR.txt"); print(sessionInfo()); sink()
 # Visualize conditional effects for constant ----
 # selected_model <- fit_all[[winner]]
 selected_model <- fit_all[["full"]]
-
+selected_model <- readRDS("./Model_Output/metabolism_temp_oa_full.rds")
 ce_95_const <- conditional_effects(selected_model, robust = F)
 ce_80_const <- conditional_effects(selected_model, robust = F, prob = 0.8)
+d <- data_metabolism_const_temp_oa %>%
+  select(absolute_rate_vo2_mg_o2_per_hour, afdm_g, temp_deg_c, pco2_uatm, tank_id) %>%
+  drop_na()
 
 data <- d %>% filter(afdm_g > 0.1) # exclude erroneous measurement
 
@@ -483,8 +486,6 @@ p_temp_pco2_rmr <- ggplot() +
   )
 
 p_temp_pco2_rmr
-
-
 
 # Post hoc on favored model (Linear additive (stacking-weighted winner)) ----
 fit_lin_add_metabolism <- readRDS("./Model_Output/metabolism_temp_oa_lin_add.rds")
@@ -815,60 +816,60 @@ p_dyn_wet_mass_rmr <- ggplot() +
   #                shape = temp_label, fill = temp_label),
   #            size = 1) +
   geom_segment(
-    aes(x = 35, xend = 23, 
-        y = 5.1, yend = 5.1),  # coordinates in plot space
-    arrow = arrow(length = unit(0.5, "cm")),
+    aes(x = 30, xend = 23, 
+        y = 5.2, yend = 5.2),  # coordinates in plot space
+    arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
     lineend = "round",
     color = "black",
-    linewidth = 1.2
+    linewidth = 1.0
   )  +
-  annotate("text", x = 31, y = 5.25, label = "20.76 °C", size = 4) +
+  annotate("label", x = 31, y = 5.2, label = "20.76 °C", size = 4, fill = "white") +
   geom_segment(
-    aes(x = 57, xend = 45, 
-        y = 2, yend = 2),  # coordinates in plot space
-    arrow = arrow(length = unit(0.5, "cm")),
+    aes(x = 52, xend = 43, 
+        y = 2.1, yend = 2.1),  # coordinates in plot space
+    arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
     lineend = "round",
     color = "black",
-    linewidth = 1.2
+    linewidth = 1.0
   )  +
-  annotate("text", x = 53, y = 2.15, label = "20.12 °C", size = 4) +
+  annotate("label", x = 50, y = 2.1, label = "20.12 °C", size = 4, fill = "white") +
   geom_segment(
-    aes(x = 56, xend = 68, 
+    aes(x = 61, xend = 68, 
         y = 1.1, yend = 1.1),  # coordinates in plot space
-    arrow = arrow(length = unit(0.5, "cm")),
+    arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
     lineend = "round",
     color = "black",
-    linewidth = 1.2
+    linewidth = 1.0
   )  +
-  annotate("text", x = 60, y = 1.25, label = "18.70 °C", size = 4) +
+  annotate("label", x = 60, y = 1.1, label = "18.70 °C", size = 4, fill = "white") +
   
   geom_segment(
-    aes(x = 35, xend = 23, 
+    aes(x = 30, xend = 23, 
         y = 2.8, yend = 2.8),  # coordinates in plot space
-    arrow = arrow(length = unit(0.5, "cm")),
+    arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
     lineend = "round",
     color = "ivory4",
-    linewidth = 1.2
+    linewidth = 1.0
   )  +
-  annotate("text", x = 31, y = 2.95, label = "18.06 °C", size = 4, color = "ivory4") +
+  annotate("label", x = 31, y = 2.8, label = "18.06 °C", size = 4, color = "ivory4", fill = "white") +
   geom_segment(
-    aes(x = 57, xend = 45, 
+    aes(x = 52, xend = 43, 
         y = 2.4, yend = 2.4),  # coordinates in plot space
-    arrow = arrow(length = unit(0.5, "cm")),
+    arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
     lineend = "round",
     color = "ivory4",
-    linewidth = 1.2
+    linewidth = 1.0
   )  +
-  annotate("text", x = 53, y = 2.55, label = "17.33 °C", size = 4, color = "ivory4") +
+  annotate("label", x = 50, y = 2.4, label = "17.33 °C", size = 4, color = "ivory4", fill = "white") +
   geom_segment(
-    aes(x = 56, xend = 68, 
+    aes(x = 61, xend = 68, 
         y = 1.5, yend = 1.5),  # coordinates in plot space
-    arrow = arrow(length = unit(0.5, "cm")),
+    arrow = arrow(length = unit(0.5, "cm"), type = "closed"),
     lineend = "round",
     color = "ivory4",
-    linewidth = 1.2
+    linewidth = 1.0
   )  +
-  annotate("text", x = 60, y = 1.65, label = "15.22 °C", size = 4, color = "ivory4") +
+  annotate("label", x = 60, y = 1.5, label = "15.22 °C", size = 4, color = "ivory4", fill = "white") +
   
   scale_color_manual(values = c(
     "ivory4", # La Nina 18-14
@@ -955,42 +956,106 @@ fit_metabolism_dynamic_const_temp_afdm_rmr_full <- brm(
 
 # Post hoc pairwise comparisons (constant & El Nino/La Nina) by temperature ----
 fit_metabolism_dynamic_const_temp_afdm_rmr_full <- readRDS("./Model_Output/metabolism_dynamic_const_temp_afdm_rmr_full.rds")
-ems <- emmeans(fit_metabolism_dynamic_const_temp_afdm_rmr_full, ~ temp_deg_c + log(afdm_g))
+selected_model <- fit_metabolism_dynamic_const_temp_afdm_rmr_full
+selected_model$formula
+# absolute_rate_vo2_mg_o2_per_hour ~ log(afdm_g) + temp_deg_c + (1 | tank_id) 
 
-cont_temp <- contrast(ems, "pairwise", ratios = TRUE, type = "response")
+ems <- emmeans(selected_model, ~ temp_deg_c)
 
-emmeans::hpd.summary(cont_temp, 
-                     prob = 0.95)
-# contrast                                                        ratio lower.HPD upper.HPD
-# 10 afdm_g4.82194915254237 / 13 afdm_g4.82194915254237           0.966    0.4698     1.634
-# 10 afdm_g4.82194915254237 / 16 afdm_g4.82194915254237           0.945    0.4635     1.601
-# 10 afdm_g4.82194915254237 / 17 afdm_g4.82194915254237           0.776    0.3775     1.309
-# 10 afdm_g4.82194915254237 / 18 afdm_g4.82194915254237           0.375    0.1825     0.633
-# 10 afdm_g4.82194915254237 / (18-14 afdm_g4.82194915254237)      1.049    0.5854     1.671
-# 10 afdm_g4.82194915254237 / 20 afdm_g4.82194915254237           0.153    0.0744     0.260
-# 10 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      1.464    0.8009     2.324
-# 13 afdm_g4.82194915254237 / 16 afdm_g4.82194915254237           0.978    0.4791     1.655
-# 13 afdm_g4.82194915254237 / 17 afdm_g4.82194915254237           0.803    0.3814     1.358
-# 13 afdm_g4.82194915254237 / 18 afdm_g4.82194915254237           0.388    0.1879     0.653
-# 13 afdm_g4.82194915254237 / (18-14 afdm_g4.82194915254237)      1.086    0.5816     1.704
-# 13 afdm_g4.82194915254237 / 20 afdm_g4.82194915254237           0.159    0.0759     0.269
-# 13 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      1.516    0.8374     2.414
-# 16 afdm_g4.82194915254237 / 17 afdm_g4.82194915254237           0.823    0.4041     1.394
-# 16 afdm_g4.82194915254237 / 18 afdm_g4.82194915254237           0.397    0.1878     0.666
-# 16 afdm_g4.82194915254237 / (18-14 afdm_g4.82194915254237)      1.111    0.6130     1.775
-# 16 afdm_g4.82194915254237 / 20 afdm_g4.82194915254237           0.162    0.0766     0.274
-# 16 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      1.551    0.8304     2.436
-# 17 afdm_g4.82194915254237 / 18 afdm_g4.82194915254237           0.483    0.2330     0.817
-# 17 afdm_g4.82194915254237 / (18-14 afdm_g4.82194915254237)      1.355    0.7323     2.143
-# 17 afdm_g4.82194915254237 / 20 afdm_g4.82194915254237           0.198    0.0905     0.331
-# 17 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      1.890    1.0280     2.991
-# 18 afdm_g4.82194915254237 / (18-14 afdm_g4.82194915254237)      2.803    1.5145     4.459
-# 18 afdm_g4.82194915254237 / 20 afdm_g4.82194915254237           0.409    0.1992     0.691
-# 18 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      3.916    2.1555     6.260
-# (18-14 afdm_g4.82194915254237) / 20 afdm_g4.82194915254237      0.146    0.0762     0.231
-# (18-14 afdm_g4.82194915254237) / (21-18 afdm_g4.82194915254237) 1.396    0.8565     2.033
-# 20 afdm_g4.82194915254237 / (21-18 afdm_g4.82194915254237)      9.571    5.0757    15.378 # <- Contrast of interest
+cont <- contrast(ems, method = "revpairwise", by = NULL, 
+                 type = "response", ratios = TRUE)
+
+emmeans::hpd.summary(cont, 
+                     prob = 0.95, 
+                     point.est = mean)
+# contrast                          ratio lower.HPD upper.HPD
+# 13 / 10                           2.298     1.152      3.57
+# 16 / 10                           2.430     1.211      3.79
+# 16 / 13                           1.099     0.553      1.71
+# (18-14 La Niña) / 10              3.587     2.038      5.29
+# (18-14 La Niña) / 13              1.622     0.902      2.40
+# (18-14 La Niña) / 16              1.535     0.868      2.29
+# 17 / 10                           3.053     1.532      4.73
+# 17 / 13                           1.380     0.699      2.15
+# 17 / 16                           1.306     0.674      2.05
+# 17 / (18-14 La Niña)              0.867     0.487      1.29
+# 18 / 10                           2.443     1.243      3.80
+# 18 / 13                           1.105     0.561      1.72
+# 18 / 16                           1.046     0.524      1.62
+# 18 / (18-14 La Niña)              0.694     0.393      1.03
+# 18 / 17                           0.831     0.417      1.29
+# 20 / 10                           2.904     1.475      4.53
+# 20 / 13                           1.313     0.651      2.03
+# 20 / 16                           1.243     0.634      1.96
+# 20 / (18-14 La Niña)              0.825     0.462      1.22
+# 20 / 17                           0.988     0.513      1.55
+# 20 / 18                           1.234     0.607      1.91
+# (21-18 El Niño) / 10              3.315     1.869      4.91
+# (21-18 El Niño) / 13              1.498     0.844      2.21
+# (21-18 El Niño) / 16              1.419     0.799      2.12
+# (21-18 El Niño) / (18-14 La Niña) 0.941     0.609      1.32
+# (21-18 El Niño) / 17              1.127     0.650      1.68
+# (21-18 El Niño) / 18              1.408     0.778      2.08
+# (21-18 El Niño) / 20              1.186     0.666      1.76
 # 
-# Point estimate displayed: median 
+# Point estimate displayed: mean 
 # Results are back-transformed from the log scale 
-# HPD interval probability: 0.95 
+# HPD interval probability: 0.95
+
+cont_posterior <- gather_emmeans_draws(cont) 
+
+cont_posterior_filtered <- cont_posterior %>%
+  filter(
+    contrast %in% c(
+      "(18-14) - 16",
+      "(21-18) - 20"
+    )
+  ) %>%
+  mutate(
+    contrast_formatted = ifelse(contrast == "(18-14) - 16",
+                                "La Niña vs 16°C", "El Niño vs 20°C")
+  )
+
+summary_emm_mhw <- cont_posterior_filtered %>%
+  group_by(contrast_formatted) %>%
+  mean_hdi(.value, .width = c(0.95)) %>%
+  mutate(
+    .value = round(.value, digits = 2),
+    .lower = round(.lower, digits = 2),
+    .upper = round(.upper, digits = 2)
+  ) %>%
+  mutate(
+    HDI = paste(.value, " (", .lower, ", ", .upper, ")", sep = "")
+  )
+
+plot_emm_fit_tpc_mhw <- ggplot(cont_posterior_filtered, 
+                               aes(x = .value, y = contrast_formatted)) +
+  geom_vline(xintercept = 0, linetype = 2, color = "black", size = 1, 
+             alpha = 0.7) +
+  stat_pointinterval(point_interval = "mean_hdi", .width = c(0.95, 0.80),
+                     interval_size_range = c(1,2), point_size = 4) +
+  geom_label_repel(data = summary_emm_mhw,
+                   aes(x = .value, label = HDI), 
+                   fill = "white", nudge_y = -0.4, nudge_x = 0.2) +
+  facet_grid(rows = vars(contrast_formatted), switch = "y") +
+  labs(
+    x = NULL,
+    y = NULL,
+    title = "RMR",
+    subtitle = "constant mean vs dynamic"
+  ) +
+  gg_options() +
+  scale_x_continuous(breaks = pretty_breaks(n = 6)) +
+  theme(
+    legend.position = "bottom",
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    panel.background = element_rect(fill = c("#DEDEDE"))
+  );plot_emm_fit_tpc_mhw
+
+ggsave("./Figures/Supplemental/PWC_Consumption_const_dynamic_temp.jpg", plot_emm_fit_tpc_mhw,
+       width = 6, height = 8, units = "in")
+ggsave("./Figures/Supplemental/PWC_Consumption_const_dynamic_temp.pdf", plot_emm_fit_tpc_mhw,
+       width = 6, height = 8, units = "in")
+ggsave("./Figures/Supplemental/PWC_Consumption_const_dynamic_temp.png", plot_emm_fit_tpc_mhw,
+       width = 6, height = 8, units = "in")
