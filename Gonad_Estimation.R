@@ -115,7 +115,7 @@ backend      <- "cmdstanr"
 seed         <- 123
 brms_fam     <- gaussian()
 
-unlink("./Model_Output/gonad_temp_oa_*", force = TRUE)
+# unlink("./Model_Output/gonad_temp_oa_*", force = TRUE)
 
 # Estimate initial gonad mass based on wild source population ------------------
 dat_gonad_init_wild <- read.csv("./Data/Initial_Wild_Morphometrics.csv")

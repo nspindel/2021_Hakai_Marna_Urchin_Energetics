@@ -454,8 +454,43 @@ ggsave("./Figures/FCE.png", p_fce_pco2_temp,
 # Post hoc on full model for constant temps -----
 fit_fce_const_temp_oa <- readRDS("./Model_Output/fce_temp_oa_full.rds")
 selected_model <- fit_fce_const_temp_oa
-selected_model$formula
-# fce ~ log(init_diam_mm) + gp(temp_deg_c, k = 5, c = 5/4, by = pco2_uatm) + (1 | tank_id) 
+summary(selected_model)
+# Family: beta 
+# Links: mu = logit 
+# Formula: fce ~ log(init_diam_mm) + gp(temp_deg_c, k = 5, c = 5/4, by = pco2_uatm) + (1 | tank_id) 
+# Data: d (Number of observations: 346) 
+# Draws: 4 chains, each with iter = 18000; warmup = 2000; thin = 1;
+# total post-warmup draws = 64000
+# 
+# Gaussian Process Hyperparameters:
+#   Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS
+# sdgp(gptemp_deg_cpco2_uatm600µatm)        0.43      0.09     0.28     0.62 1.00    72940
+# sdgp(gptemp_deg_cpco2_uatm1200µatm)       0.19      0.09     0.03     0.40 1.00    32623
+# lscale(gptemp_deg_cpco2_uatm600µatm)      0.38      0.13     0.17     0.67 1.00    64847
+# lscale(gptemp_deg_cpco2_uatm1200µatm)     0.31      0.16     0.12     0.72 1.00    84209
+# Tail_ESS
+# sdgp(gptemp_deg_cpco2_uatm600µatm)       50866
+# sdgp(gptemp_deg_cpco2_uatm1200µatm)      22582
+# lscale(gptemp_deg_cpco2_uatm600µatm)     51325
+# lscale(gptemp_deg_cpco2_uatm1200µatm)    48779
+# 
+# Multilevel Hyperparameters:
+#   ~tank_id (Number of levels: 24) 
+# Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+# sd(Intercept)     0.06      0.04     0.00     0.16 1.00    23343    31940
+# 
+# Regression Coefficients:
+#   Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+# Intercept          -3.85      0.40    -4.64    -3.05 1.00    98964    46800
+# loginit_diam_mm     0.34      0.10     0.15     0.53 1.00   128550    48695
+# 
+# Further Distributional Parameters:
+#   Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+# phi    50.92      4.10    43.18    59.24 1.00   111129    48756
+# 
+# Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
+# and Tail_ESS are effective sample size measures, and Rhat is the potential
+# scale reduction factor on split chains (at convergence, Rhat = 1). 
 ems <- emmeans(selected_model, ~ pco2_uatm | temp_deg_c,
                at = list(temp_deg_c = c(10,13,16,17,18,20)))
 

@@ -199,7 +199,7 @@ backend      <- "cmdstanr"
 seed         <- 123
 brms_fam <- Gamma(link = "log")
 
-unlink("./Model_Output/demipyramid_temp_oa_*", force = TRUE)
+# unlink("./Model_Output/demipyramid_temp_oa_*", force = TRUE)
 
 
 priors <- c( 
@@ -573,9 +573,38 @@ ggsave("./Figures/Skeleton_Jaw.jpg", p_skel_pco2_temp,
 # Post hoc on full model for constant temps -----
 fit_demi_const_temp_oa <- readRDS("./Model_Output/demipyramid_temp_oa_full.rds")
 selected_model <- fit_demi_const_temp_oa
-selected_model$formula
-# delta_demipyramid_um ~ log(initial_volume_ml) + gp(temp_num, k = 5, c = 5/4, by = pco2_uatm) + (1 | tank_id)
-
+summary(selected_model)
+# Family: gamma 
+# Links: mu = log 
+# Formula: delta_demipyramid_um ~ log(initial_volume_ml) + gp(temp_num, k = 5, c = 5/4, by = pco2_uatm) + (1 | tank_id) 
+# Data: d (Number of observations: 311) 
+# Draws: 4 chains, each with iter = 18000; warmup = 2000; thin = 1;
+# total post-warmup draws = 64000
+# 
+# Gaussian Process Hyperparameters:
+#   Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+# sdgp(gptemp_numpco2_uatm1200μatm)       0.28      0.12     0.05     0.50 1.00    19804    25799
+# sdgp(gptemp_numpco2_uatm600μatm)        0.21      0.12     0.01     0.45 1.00    19715    33059
+# lscale(gptemp_numpco2_uatm1200μatm)     0.27      0.12     0.12     0.56 1.00    57380    39506
+# lscale(gptemp_numpco2_uatm600μatm)      0.39      0.24     0.12     1.06 1.00    41529    42927
+# 
+# Multilevel Hyperparameters:
+#   ~tank_id (Number of levels: 24) 
+# Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+# sd(Intercept)     0.07      0.04     0.00     0.17 1.00    20335    28941
+# 
+# Regression Coefficients:
+#   Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+# Intercept                6.17      0.32     5.54     6.77 1.00    40218    47613
+# loginitial_volume_ml    -0.42      0.08    -0.57    -0.27 1.00    87569    47475
+# 
+# Further Distributional Parameters:
+#   Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+# shape     4.72      0.37     4.02     5.48 1.00   100358    45615
+# 
+# Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
+# and Tail_ESS are effective sample size measures, and Rhat is the potential
+# scale reduction factor on split chains (at convergence, Rhat = 1).
 ems <- emmeans(selected_model, ~ pco2_uatm | temp_num,
                at = list(temp_num = c(10,13,16,17,18,20)))
 
@@ -746,8 +775,7 @@ ggsave("./Figures/Supplemental/PWC_Skel_Jaw_pco2.png", plot_emm_fit,
 
 fit_demi_const_dynamic_temp <- readRDS("./Model_Output/demipyramid_temp_const_dynamic_full.rds")
 selected_model <- fit_demi_const_dynamic_temp
-selected_model$formula
-# delta_demipyramid_um ~ log(initial_volume_ml) + temp_deg_c + (1 | tank_id) 
+summary(selected_model)
 
 ems <- emmeans(selected_model, ~ temp_deg_c)
 
