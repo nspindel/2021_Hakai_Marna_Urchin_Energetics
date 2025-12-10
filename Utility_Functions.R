@@ -73,3 +73,16 @@ load_ocean_file <- function(file_path, site_prefix_regex = ".*-(H[12])_") {
 f_to_c <- function(temp_f) {
   (temp_f - 32) * 5 / 9
 }
+
+# Calculate bootstrap CIs 
+boot_stat <- function(x, quants = 0.95){
+  boot.out <- boot(x,fun_data, R= 999)
+  boot.conf = boot.ci(boot.out,type= "basic", conf= quants)
+  return(data.frame(
+    ymin= boot.conf$basic[4],
+    y = boot.conf$t0,
+    ymax= boot.conf$basic[5], 
+    se_mean = sd(boot.out$t), 
+    n= length(x), 
+    sd_empirical= sd(x)))
+}
