@@ -230,7 +230,7 @@ for (nm in names(model_set)) {
     control      = control_list,
     backend      = backend,
     seed         = seed,
-    file_refit   = "always",
+    file_refit   = "on_change",
     file         = paste0("./Model_Output/consumption_temp_oa_", nm)
   )
 }
@@ -309,7 +309,42 @@ sapply(pk, \(v) table(cut(v,
 # very bad (>1)          0       0       0       0        0
 
 selected_model <- fit_all$full
-
+selected_model
+# Family: gamma 
+# Links: mu = log 
+# Formula: per_cap_feed_per_day ~ gp(temp_deg_c, k = 6, c = 5/4, by = pco2_uatm) + (1 | tank_id) 
+# Data: d (Number of observations: 192) 
+# Draws: 4 chains, each with iter = 18000; warmup = 2000; thin = 1;
+# total post-warmup draws = 64000
+# 
+# Gaussian Process Hyperparameters:
+#   Estimate Est.Error l-95% CI u-95% CI
+# sdgp(gptemp_deg_cpco2_uatm600)        0.71      0.40     0.23     1.68
+# sdgp(gptemp_deg_cpco2_uatm1200)       0.62      0.68     0.11     1.99
+# lscale(gptemp_deg_cpco2_uatm600)      0.31      0.15     0.12     0.66
+# lscale(gptemp_deg_cpco2_uatm1200)     0.40      0.31     0.12     1.27
+# Rhat Bulk_ESS Tail_ESS
+# sdgp(gptemp_deg_cpco2_uatm600)    1.00     1887     4914
+# sdgp(gptemp_deg_cpco2_uatm1200)   1.01      551      164
+# lscale(gptemp_deg_cpco2_uatm600)  1.00    30758    32046
+# lscale(gptemp_deg_cpco2_uatm1200) 1.01      551      163
+# 
+# Multilevel Hyperparameters:
+#   ~tank_id (Number of levels: 24) 
+# Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+# sd(Intercept)     0.09      0.06     0.00     0.24 1.00    21305    24149
+# 
+# Regression Coefficients:
+#   Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+# Intercept     0.01      0.35    -0.90     0.55 1.01      637      161
+# 
+# Further Distributional Parameters:
+#   Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+# shape     2.78      0.28     2.27     3.36 1.00     2451     2982
+# 
+# Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
+# and Tail_ESS are effective sample size measures, and Rhat is the potential
+# scale reduction factor on split chains (at convergence, Rhat = 1).
 bayes_R2(selected_model)
 # Estimate  Est.Error      Q2.5     Q97.5
 # R2 0.4544242 0.07923617 0.2889653 0.5879063
