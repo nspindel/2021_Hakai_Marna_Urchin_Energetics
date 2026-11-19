@@ -1,0 +1,69 @@
+cff-version: 1.2.0
+type: software
+message: "If you use this analysis repository, cite the archived Zenodo code release when available and cite the associated research article once published."
+title: "Purple sea urchin energetics under ocean warming, acidification, and thermal variability: R analysis code"
+abstract: >-
+  R code and supporting experimental data for analyzing physiological and
+  energetic responses of Strongylocentrotus purpuratus to temperature,
+  elevated seawater pCO2, and El Nino- and La Nina-like variable thermal regimes.
+  Workflows cover resting metabolic rate, food consumption, assimilation
+  efficiency, gonad production, food conversion efficiency, skeletal growth,
+  Bayesian model fitting, and figure generation.
+authors:
+  - given-names: "Nathan B."
+    family-names: "Spindel"
+    affiliation: "Department of Biological Science, Florida State University, Tallahassee, FL, USA; Moss Landing Marine Laboratories, San Jose State University, Moss Landing, CA, USA; Department of Marine Science, California State University Monterey Bay, CA, USA"
+    email: "nspindel@csumb.edu"
+  - given-names: "Maya"
+    family-names: "Munstermann"
+    affiliation: "Department of Biological Science, Florida State University, Tallahassee, FL, USA; Department of Integrative Biology, University of California, Berkeley, CA, USA"
+  - given-names: "Sam"
+    family-names: "Karelitz"
+    affiliation: "Department of Biological Science, Florida State University, Tallahassee, FL, USA; Department of Integrative Biology, University of California, Berkeley, CA, USA"
+  - given-names: "Rachele"
+    family-names: "Ferraro"
+    affiliation: "Department of Biological Science, Florida State University, Tallahassee, FL, USA"
+  - given-names: "Ondine"
+    family-names: "Pontier"
+    affiliation: "Hakai Institute, Heriot Bay, BC V0P 1H0, Canada"
+  - given-names: "Brenna"
+    family-names: "Collicutt"
+    affiliation: "Hakai Institute, Heriot Bay, BC V0P 1H0, Canada"
+  - given-names: "Kate"
+    family-names: "Rolheiser"
+    affiliation: "Hakai Institute, Heriot Bay, BC V0P 1H0, Canada"
+  - given-names: "Iria"
+    family-names: "Gimenez"
+    affiliation: "Hakai Institute, Heriot Bay, BC V0P 1H0, Canada"
+  - given-names: "Evan"
+    family-names: "Cronmiller"
+    affiliation: "Hakai Institute, Heriot Bay, BC V0P 1H0, Canada"
+  - given-names: "Megan"
+    family-names: "Foss"
+    affiliation: "Hakai Institute, Heriot Bay, BC V0P 1H0, Canada"
+  - given-names: "Natalie"
+    family-names: "Mahara"
+    affiliation: "Hakai Institute, Heriot Bay, BC V0P 1H0, Canada"
+  - given-names: "Daniel S."
+    family-names: "Swezey"
+    affiliation: "Bodega Marine Laboratory, University of California Davis Coastal and Marine Sciences Institute, Bodega Bay, CA, USA"
+  - given-names: "Laura"
+    family-names: "Rogers-Bennett"
+    affiliation: "Bodega Marine Laboratory, University of California Davis Coastal and Marine Sciences Institute, Bodega Bay, CA, USA"
+  - given-names: "Daniel K."
+    family-names: "Okamoto"
+    affiliation: "Department of Biological Science, Florida State University, Tallahassee, FL, USA; Department of Integrative Biology, University of California, Berkeley, CA, USA"
+repository-code: "https://github.com/nspindel/2021_Hakai_Marna_Urchin_Energetics"
+url: "https://github.com/nspindel/2021_Hakai_Marna_Urchin_Energetics"
+license: GPL-3.0-only
+keywords:
+  - sea urchin
+  - Strongylocentrotus purpuratus
+  - ocean warming
+  - ocean acidification
+  - marine heatwaves
+  - thermal variability
+  - bioenergetics
+  - Bayesian hierarchical models
+  - R
+  - Stan
